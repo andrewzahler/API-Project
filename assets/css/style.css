@@ -1,9 +1,23 @@
 body {
 	/*padding: 20px;*/
 	}
+
+#header {
+	background-color: lightblue;
+	width: 100%;
+}
+
+.panel-title {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 20px;
+    font-size: 22px;
+
+}
+
 .appDescription-div {
 	float: left;
-	margin: 25px;
+	margin: 20px;
 	width: 45%;
 }	
 
@@ -11,14 +25,9 @@ body {
 	float: none;
     margin: auto;
     margin-top: 100px
-    /*height: 80%;*/
+
 }
 
-.panel-title {
-    margin-top: 40px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-}
 
 .container2 {
 	float: right;
@@ -26,10 +35,9 @@ body {
 }
 .appdescription {
 float: left;
-/*width: 400px;*/
+
 height: 170px;
-  /*overflow: auto;*/
-  /*clear: left*/
+
 }
 
 #form-panel {
@@ -64,9 +72,15 @@ height: 170px;
 	height: 300px;
 }
 
+.dropdown {
+	position: relative;q
+}
+
+
 button {
 	margin-top:20px;
 	float: right;
+	margin-bottom: 20px;
 }
 
 .footer {
