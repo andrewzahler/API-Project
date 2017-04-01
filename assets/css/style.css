@@ -1,0 +1,40 @@
+body {
+	background-image: url(http://feed.matthewkeys.net/wp-content/uploads/2014/05/wildfire-1-1280x586.jpg);
+}
+.container {
+	opacity: 0.7;
+}
+
+.appdescription {
+	
+float: left;
+width: 50%;
+  
+  /*overflow: auto;*/
+  /*clear: left*/
+  
+}
+.firstbox {
+	float: left;
+	width: 50%
+}
+.userinfo {
+	float: right;
+	width: 50%;
+	/*overflow: auto;*/
+	/*clear: all;*/
+}
+.region {
+	width: 50%;
+}
+.twitterranks {
+	float: left;
+	background-color: #ffffff;
+	width: 40%;
+}
+.googlemaps {
+	background-color: #ccc;
+	float: right;
+	width: 60%;
+	height: 300px;
+}
