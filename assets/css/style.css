@@ -1,0 +1,48 @@
+body {
+	/*padding: 20px;*/
+	}
+.container1 {
+	float: left;
+
+
+}
+.container2 {
+	float: right;
+	padding: 40px;
+}
+.appdescription {
+	
+float: left;
+width: 400px;
+height: 170px;
+
+  /*overflow: auto;*/
+  /*clear: left*/
+  
+}
+.firstbox {
+	float: left;
+	width: 50%
+	padding: 20px;
+	height: 100px;
+}
+.userinfo {
+	float: right;
+	width: 500px;
+	/*overflow: auto;*/
+	/*clear: all;*/
+}
+.region {
+	width: 50%;
+}
+.twitterranks {
+	float: left;
+	background-color: #ffffff;
+	width: 40%;
+}
+.googlemaps {
+	background-color: #ccc;
+	float: right;
+	width: 60%;
+	height: 300px;
+}
