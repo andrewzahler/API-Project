@@ -61,19 +61,24 @@ height: 170px;
 	width: 100%;
 }
 .twitterranks {
-	float: left;
+	margin-top: 80px;
+	/*float: left;*/
 	background-color: #ffffff;
 	width: 40%;
 }
 .googlemaps {
 	background-color: #ccc;
 	float: right;
-	width: 60%;
-	height: 300px;
+	width: 58%;
+	height: 400px;
+	margin-left: 10px;
+	margin-top: 1px;
 }
 
 .dropdown {
-	position: relative;q
+	position: relative;
+	float: left;
+
 }
 
 
@@ -96,4 +101,26 @@ button {
 	margin-left: 40px;
 	margin-right: 40px;
 	text-align: right;
+}
+
+#main-container-page2 {
+	margin-top:20px;
+	margin-bottom: 20px;
+	margin-right:10px;
+	height: 100%;
+	border-color: white;
+	box-shadow: none;
+}
+
+.trending {
+	padding:10%;
+	margin:5px;
+	font-size:14px;
+}
+
+#left-sidebar-page2 {
+	width:40%;
+	float:left;
+	height: 400px;
+	/*margin-top:10px;*/
 }
