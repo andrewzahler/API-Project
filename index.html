@@ -3,8 +3,22 @@
 
 <head>
     <title>Project </title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
 </head>
 
 <body>
@@ -14,42 +28,47 @@
 
  <div class="container" id="containerOfTheDocument">
 
- <!--Left side panel-->
-    <div class="appDescription-div">
+ <!--Left side panel here-->
+    <div class="panel-body" id="appDescription-div">
         <div class="panel-body">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="appdescription">
-                        App Description
-                    </div>
-                </div>
+            <div class="appdescription">
+                Follow your interests in real time 
+                Watch ideas light up across the country.
             </div>
         </div>
     </div>
-    
-  <!--User Info Panel-->    
+   
+  <!--right-side panel--> 
+  <!--User Info-->    
     <div class="userinfo">
       <div class="panel-body" id="form-panel">
         <div class="user-info">
             <h4 id="user-info"> Name </h4>
             <div class="form-group">
-                <input type="text" class="form-control" id="name" placeholder="Input field">
+                <input type="text" class="form-control" id="name" placeholder="Annie Clark">
+            </div>
+        </div>
+    <!--User Enters the Region-->
+    <h4 id="region"> Region </h4>
+    
+        <div class="dropdown" id="region-dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Northeast</a><br>
+                <a class="dropdown-item" href="#">Southeat</a><br>
+                <a class="dropdown-item" href="#">Midwest</a>
+                <a class="dropdown-item" href="#">Northwest</a>
+                <a class="dropdown-item" href="#">Southwest</a>
             </div>
         </div>
 
+<!-- twitter Oauth goes HERE-->
 
-  <!--User Enters the Region-->
+   
+      
     
-    <h4 id="region"> Region </h4>
-
-    <div class="form-group">
-      <div class="region">
-        <input type="text" class="form-control" id="Region" placeholder="Input field">
-            <div class="button">
-                <button type="submit" class="btn btn-primary">Twitter</button>
-            </div>
-      </div>
-    </div>
 </div>
 </div>
 </div>
@@ -64,6 +83,8 @@
     </div>
   </footer>
 
+<!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </body>
 

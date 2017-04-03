@@ -16,15 +16,11 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 20px;
-    font-size: 22px;
+    font-size: 24px;
     color:white;
 }
 
-.appDescription-div {
-	float: left;
-	margin: 20px;
-	width: 45%;
-}	
+
 
 #containerOfTheDocument {
 	float: none;
@@ -33,16 +29,23 @@ body {
 
 }
 
-
 .container2 {
 	float: right;
 	padding: 40px;
 }
+
+#appDescription-div {
+	float: left;
+	margin: 20px;
+	width: 45%;
+	border:none;
+
+}	
+
 .appdescription {
-float: left;
-
-height: 170px;
-
+	float: left;
+	font-size: 22px;
+	height: 170px;
 }
 
 #form-panel {
@@ -83,13 +86,19 @@ height: 170px;
 .dropdown {
 	position: relative;
 	float: left;
-
 }
 
+#region-dropdown {
+	margin-bottom: 15px;
+}
 
-button {
+.dropdown-item {
+	padding: 15px;
+}
+
+#twitter-button {
 	margin-top:20px;
-	float: right;
+	float: left;
 	margin-bottom: 20px;
 }
 
