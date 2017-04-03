@@ -3,16 +3,21 @@ body {
 	}
 
 #header {
-	background-color: lightblue;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff3232+0,e07b08+100 */
+	background: #ff3232; /* Old browsers */
+	background: -moz-linear-gradient(left, #ff3232 0%, #e07b08 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #ff3232 0%,#e07b08 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #ff3232 0%,#e07b08 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#e07b08',GradientType=1 ); /* IE6-9 */
 	width: 100%;
 }
 
 .panel-title {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     margin-left: 20px;
     font-size: 22px;
-
+    color:white;
 }
 
 .appDescription-div {
