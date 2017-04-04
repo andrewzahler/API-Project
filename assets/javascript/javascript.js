@@ -6,6 +6,12 @@ $("button").on("click", function() {
 		alert ("Please enter your name!")
 	}
 	
+	else {
+		function redirect(){
+			var url = "http://www.google.com";
+			window.open(url, '_top');
+		}
+	}
 });
 
 // ------- end validating input ------ //
