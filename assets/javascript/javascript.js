@@ -1,3 +1,4 @@
+// ------- validate text input on page 1 ------ //
 $("button").on("click", function() {
 	// event.preventDefault();
 
@@ -6,3 +7,5 @@ $("button").on("click", function() {
 	}
 	
 });
+
+// ------- end validating input ------ //
