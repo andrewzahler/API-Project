@@ -148,3 +148,7 @@ body {
 	height: 400px;
 	/*margin-top:10px;*/
 }
+
+#submit-btn {
+	margin-left:14px;
+}
