@@ -37,7 +37,7 @@ function getRandomNumber(min, max) {
 function getHashtags() {
     $("button").on("click", function() {
         $.ajax({
-                url: "http://beta.json-generator.com/api/json/get/EkI8k4j3M",
+                url: "http://www.json-generator.com/api/json/get/bRXYoPdpea?indent=2",
                 method: "GET"
             })
             // counts number of times each hashtag turns up in the JSON;
