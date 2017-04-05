@@ -47,6 +47,9 @@ body {
 	font-size: 22px;
 	height: 170px;
 }
+.panel-body {
+	height: 500px;
+}
 
 #form-panel {
 	margin-right: 40px;
@@ -78,7 +81,7 @@ body {
 	background-color: #ccc;
 	float: right;
 	width: 58%;
-	height: 400px;
+	height: 100%;
 	margin-left: 10px;
 	margin-top: 1px;
 }
@@ -100,11 +103,11 @@ body {
 	padding: 15px;
 }
 
-#twitter-button {
+/*#twitter-button {
 	margin-top:20px;
 	float: left;
 	margin-bottom: 20px;
-}
+}*/
 
 #sign-in {
 	width: 100%;
@@ -142,13 +145,17 @@ body {
 	font-size:14px;
 }
 
+ul {
+	list-style: none
+}
+
 #left-sidebar-page2 {
 	width:40%;
 	float:left;
-	height: 400px;
+	height: 100%;
 	/*margin-top:10px;*/
 }
 
 #submit-btn {
-	margin-left:14px;
+	margin-left:0px;
 }
