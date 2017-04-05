@@ -33,7 +33,7 @@ function getRandomNumber(min, max) {
     randomNum = Math.floor(Math.random() * (max - min)) + min;
 };
 
-// 
+// Needs new element or ID to grab onto
 function getHashtags() {
     $("#CHANGETHIS").on("click", function() {
         $.ajax({
