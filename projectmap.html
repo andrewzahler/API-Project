@@ -44,7 +44,7 @@
                             </select>
 <script type="text/javascript" language="javascript">
    
-
+var northeast ;
       var regions = {
           northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
           west: ["seattle", "portland", "lasvegas", "vancouver", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
@@ -52,8 +52,12 @@
           midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
 
                             }
+
+                            for (var i in regions){
+                                console.log(regions.northeast);
+                            }
     // Object.keys() - takes an object and returns an array of all the keys in the object
-    
+    // regions[0].onchange = function(){northeastmap};
     var splitValues = Object.keys(regions);
     for (var i = 0; i < splitValues.length; i++) {
         var opt = document.createElement("option");
@@ -550,6 +554,9 @@
             mapTypeId: 'terrain'
         });
 
+    // function topright() {
+    // var northeast = map.setCenter({lat: 41.714, lng: -74.005});
+    //     regions[0].on("click", function topright)}
         // Construct the circle for each value in citymap.
         // Note: We scale the area of the circle based on the population.
         for (var city in citymap) {
@@ -565,7 +572,16 @@
                 radius: Math.sqrt(citymap[city].population) * 100
             });
         }
+        function northeastmap() {
+            var northeast = new google.maps.Map(document.getElementById('map'),{
+                zoom: 7,
+                center: {lat: 41.714, lng: -74.005},
+                mapTypeId: 'terrain'
+            });
+        }
     }
+
+
     </script>
     </div>
 <!--footer-->

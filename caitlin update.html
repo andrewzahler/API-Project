@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Wildfire | Map </title>
-    <div class="container" id="header">
+  <title>Wildfire | Map </title>
+  <div class="container" id="header">
         <h3 class="panel-title"> Wildfire</h3>
     </div>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-    </script>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
+
     <style>
     /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -32,25 +29,21 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="panel panel-default" id="main-container-page2">
-            <div class="panel-body">
-                <div class="panel panel-default" id="left-sidebar-page2">
-                    <div class="panel-body">
-                        <span id="name"> Name Here </span>
-                        <br>
-                        <span class="location"> NY, New York</span>
-                        <br>
-                        <section id="left">
-                            <!-- <div id="DropDownList"> -->
-                            <select id="DropDownList">
+<div class="container-fluid">
+
+<div class="panel panel-default" id="main-container-page2">
+  <div class="panel-body">
+    <div class="panel panel-default" id="left-sidebar-page2">
+      <div class="panel-body">
+        <span id="name"> Name Here  </span>
+          <br>                 
+         <span class="location"> NY, New York</span><br>
+        <section id="left">
+    <!-- <div id="DropDownList"> -->
+<select id="DropDownList">
                             </select>
-                            <script type="text/javascript" language="javascript">
-                            // var cities = {
-                            //     albuquerque, atlanta, austin, baltimore, batonrouge, birmingham, boston,
-                            //         charlotte, chicago, cincinnati, cleveland, coloradosprings, columbus, dallas, denver, detroit, elpaso, fresno, greensboro, harrisburg, honolulu, houston, indianapolis, jackson, jacksonville, kansascity, lasvegas, longbeach, losangeles, louisville, memphis, mesa, miami, milwaukee, minneapolis, nashville, newhaven, neworleans, newyork, norfolk, oklahomacity, omaha, orlando, philadelphia, phoenix, pittsburgh, portland, providence, raleigh, richmond, sacramento, saltlakecity, sanantonio, sandiego, sanfrancisco, sanjose, seattle, stlouis, tallahassee, tampa, tucson, virginiabeach, washingtondc,
-                                
-                            // }
+<script type="text/javascript" language="javascript">
+   
 
       var regions = {
           northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
@@ -59,50 +52,37 @@
           midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
 
                             }
-                            // Object.keys() - takes an object and returns an array of all the keys in the object
-                            
-                            var splitValues = Object.keys(regions);
-                            for (var i = 0; i < splitValues.length; i++) {
-                                var opt = document.createElement("option");
+    // Object.keys() - takes an object and returns an array of all the keys in the object
+    
+    var splitValues = Object.keys(regions);
+    for (var i = 0; i < splitValues.length; i++) {
+        var opt = document.createElement("option");
 
-                                // Add an Option object to Drop Down/List Box
-                                document.getElementById("DropDownList").options.add(opt);
+        // Add an Option object to Drop Down/List Box
+        document.getElementById("DropDownList").options.add(opt);
 
-                                // Assign text and value to Option object
-                                opt.text = splitValues[i];
-                                opt.value = splitValues[i];
-                            }
-                            </script>
-                    </div>
-                    </section>
-                    <!-- trending section-->
-                    <div class="twitterranks">
-                        <ol class="topics">
-                            <li>
-                                <div class="trending" id="div1"> #Food </div>
-                            </li>
-                            <li>
-                                <div class="trending" id="div2"> #Sports </div>
-                            </li>
-                            <li>
-                                <div class="trending" id="div3"> #Politics </div>
-                            </li>
-                            <li>
-                                <div class="trending" id="div4"> #Weather </div>
-                            </li>
-                            <li>
-                                <div class="trending" id="div5"> #Travel </div>
-                            </li>
-                        </ol>
-                    </div>
-                    <!-- end of trending topics-->
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div id="map"></div>
-    <script>
+        // Assign text and value to Option object
+        opt.text = splitValues[i];
+            opt.value = splitValues[i];
+        }
+    </script>
+                    <!-- </div> -->
+  </section>
+<!-- trending section-->
+  <div class="twitterranks"> 
+    <ul class="topics">
+      <li><div class="trending" id="div1"> #Food </div></li>
+      <li><div class="trending" id="div2"> #Sports </div></li>
+      <li><div class="trending" id="div3"> #Politics </div></li>
+      <li><div class="trending" id="div4"> #Weather </div></li>
+      <li><div class="trending" id="div5"> #Travel </div></li>    
+    </ul>
+  </div>
+<!-- end of trending topics-->
+</div>
+</div>
+<div id="map"> Map here 
+      <script>
     // This example creates circles on the map, representing populations in North
     // America.
 
@@ -587,15 +567,18 @@
         }
     }
     </script>
-    <footer class="footer">
-        <div class="container" id="footer-text">
-            <p class="text-muted">
-                Team Names here &copy; 2017
-            </p>
-        </div>
-    </footer>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSEFhd7Cf0qYOwO1kBiZlakxi99kjPrsY&callback=initMap">
+    </div>
+<!--footer-->
+  <footer class="footer">
+    <div class="container" id="footer-text">
+        <p class="text-muted">
+            Team Names here &copy; 2017
+        </p>
+    </div>
+  </footer>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSEFhd7Cf0qYOwO1kBiZlakxi99kjPrsY&callback=initMap">
     </script>
-</body>
 
+  
+</body>
 </html>
