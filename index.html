@@ -1,59 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Project </title>
+    <meta charset="utf-8">
+    <title>Wildfire | Sign-in</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    
+
 </head>
 
 <body>
+ <!--header-->
     <div class="container" id="header">
         <h3 class="panel-title"> Wildfire</h3>
     </div>
 
  <div class="container" id="containerOfTheDocument">
 
- <!--Left side panel-->
-    <div class="appDescription-div">
+ <!--Left side panel here-->
+    <div class="panel-body" id="appDescription-div">
         <div class="panel-body">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="appdescription">
-                        App Description
-                    </div>
-                </div>
+            <div class="appdescription">
+                Follow your interests in real time.<br> 
+                Watch ideas light up across the country.
             </div>
         </div>
     </div>
-    
-  <!--User Info Panel-->    
+   
+ <!--right-side panel--> 
+  <!--beginning of form-->    
+ <form>
     <div class="userinfo">
       <div class="panel-body" id="form-panel">
         <div class="user-info">
-            <h4 id="user-info"> Name </h4>
+            <h4> Name </h4>
             <div class="form-group">
-                <input type="text" class="form-control" id="name" placeholder="Input field">
+                <input type="text" class="form-control" id="textfield-name" >
             </div>
         </div>
 
-
-  <!--User Enters the Region-->
+    <!--User Enters the Region-->
     
-    <h4 id="region"> Region </h4>
+        <div class="form-group" id="region-select">
+            <label for="sel1"><h4>Select Your Region</h4></label>
+            <select class="form-control" id="sel1">
+                <option value="NE">Northeast</option>
+                <option value="SE">Southeast</option>
+                <option value="MW">Midwest</option>
+                <option value="NW">Northwest</option>
+                <option value="SW">Southwest</option>
+            </select>
+        </div>
 
-    <div class="form-group">
-      <div class="region">
-        <input type="text" class="form-control" id="Region" placeholder="Input field">
-            <div class="button">
-                <button type="submit" class="btn btn-primary">Twitter</button>
+
+
+
+       <!--  <div class="dropdown" id="region-dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Your Area
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="region-select">
+                <a class="dropdown-item" id="NE" href="#">Northeast</a><br>
+                <a class="dropdown-item" id="SE" href="#">Southeat</a><br>
+                <a class="dropdown-item" id="MW" href="#">Midwest</a><br>
+                <a class="dropdown-item" id="NW" href="#">Northwest</a><br>
+                <a class="dropdown-item" id="SW" href="#">Southwest</a><br>
             </div>
+        </div> -->
+
+
+
       </div>
+
+       <div id="sign-in">
+       <h4> Sign In With Your Account </h4>
+       <!-- twitter Oauth goes HERE-->  
+
+
     </div>
-</div>
-</div>
-</div>
-    
+        <br>
+        <button type="submit" class="btn" id="submit-btn">Submit</button>
+   </div>
+  </div>
+ </form>
+<!--end of form -->
+
 
 <!--footer-->
   <footer class="footer">
@@ -66,6 +110,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="assets/javascript/javascript.js"></script>
 
+<!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="assets/javascript/javascript.js"></script>
 
 </body>
 

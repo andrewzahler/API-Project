@@ -35,7 +35,7 @@ function getRandomNumber(min, max) {
 
 // 
 function getHashtags() {
-    $("button").on("click", function() {
+    $("#CHANGETHIS").on("click", function() {
         $.ajax({
                 url: "http://www.json-generator.com/api/json/get/bRXYoPdpea?indent=2",
                 method: "GET"
@@ -90,3 +90,16 @@ function getHashtags() {
 $(document).ready(function() {
     getHashtags();
 });
+
+
+// ------- validate text input on page 1 ------ //
+$("button").on("click", function() {
+	// event.preventDefault();
+
+	if ($('#textfield-name').val() === '') {
+		alert ("Please enter your name!")
+	}
+	
+});
+
+// ------- end validating input ------ //
