@@ -1,6 +1,6 @@
 
 // ------- validate text input on page 1 ------ //
-$("button").on("click", function() {
+$("#submit-btn").on("click", function() {
 	// event.preventDefault();
 
 	var userName = $('#textfield-name').val();
@@ -15,13 +15,17 @@ $("button").on("click", function() {
 
 		// var storedName = localStorage.setItem("usernameVar", userName);
 
-		load("projectmap.html");
-		// console.log(userName);
-		// console.log(storedName);
 
+		
 
-		// $('#name-here').html(localStorage.getItem("usernameVar")); 
+		$('#name-here').html(localStorage.getItem("usernameVar")); 
 	}
 });
 
 // ------- end validating input ------ //
+
+
+
+
+
+
