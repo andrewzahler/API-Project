@@ -8,17 +8,18 @@ $("#submit-btn").on("click", function() {
 	// var storedName = localStorage.setItem("usernameVar", userName)
 
 	if (userName === '') {
-		alert ("Please enter your name!")
+		alert ("Please enter your name!");
+		
+		$(document).load("index.html");
 	}
 	
 	else {
 
-		// var storedName = localStorage.setItem("usernameVar", userName);
-
+		localStorage.setItem("name", userName);
 
 		
 
-		$('#name-here').html(localStorage.getItem("usernameVar")); 
+		// $('#name-here').html(localStorage.getItem("usernameVar")); 
 	}
 });
 
