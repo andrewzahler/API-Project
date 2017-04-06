@@ -19,9 +19,25 @@ $("button").on("click", function() {
 		// console.log(userName);
 		// console.log(storedName);
 
+		function myFunction() {
+		    var x = $('#page2');
+		    if (x.style.display === 'none') {
+		        x.style.display = 'block';
+		    } else {
+		        x.style.display = 'none';
+		    }
+		}
+
+		myFunction();
 
 		// $('#name-here').html(localStorage.getItem("usernameVar")); 
 	}
 });
 
 // ------- end validating input ------ //
+
+
+
+
+
+
