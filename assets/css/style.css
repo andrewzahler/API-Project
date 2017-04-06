@@ -20,7 +20,10 @@ body {
     color:white;
 }
 
-
+#p2dropdown {
+	padding-right:10px;
+	padding-left: 10px;
+}
 
 #containerOfTheDocument {
 	float: none;
@@ -71,12 +74,11 @@ body {
 .region {
 	width: 100%;
 }
-.twitterranks {
-	margin-top: 80px;
-	/*float: left;*/
-	background-color: #ffffff;
-	width: 40%;
+
+#submit-btn {
+	margin-left:0px;
 }
+
 .googlemaps {
 	background-color: #ccc;
 	float: right;
@@ -129,9 +131,9 @@ body {
 }
 
 #footer-text {
-	margin:30px;
+	margin-top:30px;
 	margin-left: 40px;
-	margin-right: 40px;
+	margin-right: 0px;
 	text-align: right;
 }
 
@@ -144,15 +146,66 @@ body {
 	box-shadow: none;
 }
 
+
+/* * * * * PAGE 2 SIDE BAR * * * * **/
 .trending {
-	padding:10%;
+	/*padding:10%;*/
 	margin:5px;
 	font-size:14px;
 }
 
+.twitterranks {
+	margin-top: 30px;
+	/*float: left;*/
+	background-color: #ffffff;
+	width: 100%;
+}
+
+/* trends */
+
+ul {
+	list-style: none;
+}
 
 .topics {
-	width:100%;
+	width:175px;
+	font-style: oblique;
+	font-size:14px;
+	padding:5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.topic {
+	font-weight: bold;
+}
+
+#div1 {
+	color: #fb401a;
+
+}
+
+#div2 {
+	color: #fa4217;
+
+}
+
+#div3 {
+	color: #f15700;
+}
+
+#div4 {
+	color: #ec6300;
+}
+
+#div5 {
+	color: #e37800;
+}
+
+/* end trends */
+
+#red {
+	color:red;
 }
 
 #left {
@@ -166,6 +219,11 @@ body {
 	/*margin-top:10px;*/
 }
 
-#submit-btn {
-	margin-left:0px;
+@media (min-width: 992px) {
+	.container {
+    	width: 95%;
+	}
 }
+
+
+

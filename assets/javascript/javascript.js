@@ -1,6 +1,6 @@
 
 // ------- validate text input on page 1 ------ //
-$("button").on("click", function() {
+$("#submit-btn").on("click", function() {
 	// event.preventDefault();
 
 	var userName = $('#textfield-name').val();
