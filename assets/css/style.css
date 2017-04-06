@@ -80,7 +80,7 @@ body {
 .googlemaps {
 	background-color: #ccc;
 	float: right;
-	width: 58%;
+	width: 68%;
 	height: 100%;
 	margin-left: 10px;
 	margin-top: 1px;
@@ -95,6 +95,11 @@ body {
 }
 
 #dropdownMenuButton {
+	width:100%;
+	margin-top:10px;
+}
+
+#dropdownMenu1 {
 	width:100%;
 }
 
@@ -145,12 +150,17 @@ body {
 	font-size:14px;
 }
 
-ul {
-	list-style: none
+
+.topics {
+	width:100%;
+}
+
+#left {
+	width: 100%;
 }
 
 #left-sidebar-page2 {
-	width:40%;
+	width:30%;
 	float:left;
 	height: 100%;
 	/*margin-top:10px;*/

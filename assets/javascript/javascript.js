@@ -15,22 +15,10 @@ $("button").on("click", function() {
 
 		// var storedName = localStorage.setItem("usernameVar", userName);
 
-		load("projectmap.html");
-		// console.log(userName);
-		// console.log(storedName);
 
-		function myFunction() {
-		    var x = $('#page2');
-		    if (x.style.display === 'none') {
-		        x.style.display = 'block';
-		    } else {
-		        x.style.display = 'none';
-		    }
-		}
+		
 
-		myFunction();
-
-		// $('#name-here').html(localStorage.getItem("usernameVar")); 
+		$('#name-here').html(localStorage.getItem("usernameVar")); 
 	}
 });
 
