@@ -26,6 +26,8 @@ $("#submit-btn").on("click", function() {
 //*** variables
 // This is our main object of the top trending terms, organized by city. Each city is a child object with properties "trend" and "volume".   
 var trendingMap = {};
+var randomCities = [];
+
 
 // functions ***
 function getRandomInt(min, max) {
@@ -55,15 +57,43 @@ function objectBuilder() {
                     trendingMap[cityName].volume = tweetVol;
                 };
             };
-            console.log(trendingMap);
         });
 };
 
-
-
-
-$("#sel1").change(function (event) {
-        var key = event.target.value;
+// Can't sort the object of top trending topics, so this function is a step toward populating the map sidebar with five random cities from whatever region is selected.  
+$("#sel1").change(function(event) {
+    var key = event.target.value;
+    console.log(key);
+    if (key === "NE") {
+        for (var i = 0; i < 5; i++) {
+            var randomNum = getRandomInt(0, regions.northeast.length);
+            var popper  = regions.northeast.pop(randomNum, 1);
+            randomCities.push(popper);
+        };
+    } else if (key === "S") {
+        var randomCities = [];
+        for (var i = 0; i < 5; i++) {
+            var randomNum = getRandomInt(0, regions.south.length);
+            var popper = regions.south.pop(randomNum, 1);
+            randomCities.push(popper);
+        };
+    } else if (key === "W") {
+        var randomCities = [];
+        for (var i = 0; i < 5; i++) {
+            var randomNum = getRandomInt(0, regions.west.length);
+            var popper = regions.west.popper(randomNum, 1);
+            randomCities.push(popper);
+        };
+    } else if (key === "MW") {
+        var randomCities = [];
+        for (var i = 0; i < 5; i++) {
+            var randomNum = getRandomInt(0, regions.midwest.length);
+            var popper = regions.midwest.pop(randomNum, 1);
+            randomCities.push(popper);
+        };
+    };
+    console.log(randomCities);
+});
 
 // Main function
 
