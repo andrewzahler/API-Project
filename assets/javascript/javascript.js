@@ -34,7 +34,6 @@ $("#submit-btn").on("click", function() {
 
 
 
-
 //******** Andrew's code ends here **********
 
 

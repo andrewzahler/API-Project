@@ -32,7 +32,7 @@
 <div class="container-fluid">
 
 <div class="panel panel-default" id="main-container-page2">
-  <div class="panel-body">
+  <div class="panel-body" id="page2">
     <div class="panel panel-default" id="left-sidebar-page2">
       <div class="panel-body">
         <span id="name"></span>
@@ -65,6 +65,7 @@
           south: ["sanjose", "dallas", "sanantonio", "oklahomacity", "houston", "elpaso", "birmingham", "neworleans", "louisville", "atlanta", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginiabeach", "washingtondc", "tampa"],
           midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
                             }
+
     // Object.keys() - takes an object and returns an array of all the keys in the object
     
     $("#sel1").change(function (event) {
@@ -89,7 +90,6 @@
   // .change();
 
     </script>
-                    <!-- </div> -->
   
 <!-- trending section-->
 <div class="twitterranks"> 
@@ -103,7 +103,7 @@
       </li>
       <li>
         <div class="trending" id="div2">
-          <span class="topic"id="topic1"> #steakpizza </span><br>
+          <span class="topic" id="topic1"> #steakpizza </span><br>
           <span id="city1"> Jersey City</span>
           <span id="pop1"> 43445 </span>
         </div>
@@ -131,13 +131,14 @@
       </li> 
     </ul>
   </div>
+</div>
+</div>
+
 <!-- end of trending topics-->
-</div>
-</div>
+
 <div id="map"> Map here 
       <script>
-    // This example creates circles on the map, representing populations in North
-    // America.
+    // This example creates circles on the map, representing populations in North America.
     // First, create an object containing LatLng and population for each city.
     var citymap = {
         vancouver: {
@@ -663,8 +664,8 @@
 
     </script>
     </div>
-</div>
-</div>
+  </div>
+ </div>
 </div>
 <!--footer-->
   <footer class="footer">
@@ -676,7 +677,7 @@
   </footer>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSEFhd7Cf0qYOwO1kBiZlakxi99kjPrsY&callback=initMap">
     </script>
-<script src="javascript/javascript.js"></script>
+<script src="assets/javascript/javascript.js"></script>
 
   
 </body>

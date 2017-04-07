@@ -53,7 +53,7 @@ gobody {
 	height: 170px;
 }
 .panel-body {
-	height: 500px;
+	height: 515px;
 }
 
 #form-panel {
@@ -157,6 +157,7 @@ gobody {
 .trending {
 	/*padding:10%;*/
 	margin:5px;
+	margin-top: 15px;
 	font-size:14px;
 }
 
