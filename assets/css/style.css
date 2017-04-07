@@ -12,6 +12,7 @@ body {
 	width: 100%;
 }
 
+
 .panel-title {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -24,6 +25,7 @@ body {
 	padding-right:10px;
 	padding-left: 10px;
 }
+
 
 #containerOfTheDocument {
 	float: none;
@@ -75,19 +77,24 @@ body {
 	width: 100%;
 }
 
+
 #submit-btn {
 	margin-left:0px;
+
 	color:white;
 	background-color:#f15700; 
+
 }
 
 .googlemaps {
 	background-color: #ccc;
 	float: right;
-	width: 68%;
+
+	width: 78%;
 	height: 100%;
 	margin-left: 10px;
 	margin-top: 1px;
+
 }
 
 .dropdown {
@@ -207,7 +214,9 @@ ul {
 /* end trends */
 
 #red {
+
 	color:#800000;
+
 }
 
 #left {
@@ -215,7 +224,7 @@ ul {
 }
 
 #left-sidebar-page2 {
-	width:30%;
+	width:20%;
 	float:left;
 	height: 100%;
 	/*margin-top:10px;*/
