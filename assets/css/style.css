@@ -80,17 +80,26 @@ body {
 
 #submit-btn {
 	margin-left:0px;
+<<<<<<< HEAD
 
 	color:white;
 	background-color:#f15700; 
 
+=======
+	background-color:#f15700;
+	color:white;
+>>>>>>> master
 }
 
 .googlemaps {
 	background-color: #ccc;
 	float: right;
+<<<<<<< HEAD
 
 	width: 78%;
+=======
+	width: 72%;
+>>>>>>> master
 	height: 100%;
 	margin-left: 10px;
 	margin-top: 1px;
@@ -191,12 +200,10 @@ ul {
 
 #div1 {
 	color: #fb401a;
-
 }
 
 #div2 {
 	color: #fa4217;
-
 }
 
 #div3 {
@@ -224,7 +231,7 @@ ul {
 }
 
 #left-sidebar-page2 {
-	width:20%;
+	width:25%;
 	float:left;
 	height: 100%;
 	/*margin-top:10px;*/

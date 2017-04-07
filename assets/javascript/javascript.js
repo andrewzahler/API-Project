@@ -1,10 +1,7 @@
 
 // ------- validate text input on page 1 ------ //
-<<<<<<< HEAD
 $("#submit-btn").on("click", function() {
-=======
-$("button").on("click", function() {
->>>>>>> ricardo_branch
+
 	// event.preventDefault();
 
 	var userName = $('#textfield-name').val();
@@ -12,14 +9,15 @@ $("button").on("click", function() {
 	// var storedName = localStorage.setItem("usernameVar", userName)
 
 	if (userName === '') {
-		alert ("Please enter your name!")
+		alert ("Please enter your name!");
+		
+		$(document).load("index.html");
 	}
 	
 	else {
 
-		var storedName = localStorage.setItem("name", userName);
+		localStorage.setItem("name", userName);
 
-<<<<<<< HEAD
 
 		
 
@@ -32,17 +30,3 @@ $("button").on("click", function() {
 
 
 
-
-
-=======
-		load("projectmap.html");
-		// console.log(userName);
-		// console.log(storedName);
-
-
-		// $('#name-here').html(localStorage.getItem("usernameVar")); 
-	}
-});
-
-// ------- end validating input ------ //
->>>>>>> ricardo_branch
