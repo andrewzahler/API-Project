@@ -2,17 +2,10 @@
 <html>
 <head>
   <title>Wildfire | Map </title>
-<<<<<<< HEAD
-	<div class="container" id="header">
-        <h3 class="panel-title"> Wildfire</h3>
-    </div>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-=======
   <div class="container" id="header">
         <h3 class="panel-title"> Wildfire</h3>
     </div>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
->>>>>>> ricardo_branch
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
@@ -39,38 +32,69 @@
 <div class="container-fluid">
 
 <div class="panel panel-default" id="main-container-page2">
-<<<<<<< HEAD
-	<div class="panel-body">
-		<div class="panel panel-default" id="left-sidebar-page2">
-			<div class="panel-body">
-        <div id="name-here">  </div>
+  <div class="panel-body">
+    <div class="panel panel-default" id="left-sidebar-page2">
+      <div class="panel-body">
+        <span id="name"></span>
           <br>                 
          <span class="location"></span><br>
-				
-
- <section id="left">
-  <div id="p2dropdown"
+       <!--  <section id="left"> -->
+    <!-- <div id="DropDownList"> -->
+<section id="left">
+     <div id="p2dropdown">
   <!--User Enters the Region-->
     <div class="form-group" id="region-select">
       <label for="sel1"><h4 id="red">Trending Topics in this Region</h4></label>
       <select class="form-control" id="sel1">
           <option value="NE">Northeast</option>
-          <option value="SE">Southeast</option>
+          <option value="S">South</option>
+          <option value="W">West</option>
           <option value="MW">Midwest</option>
-          <option value="NW">Northwest</option>
-          <option value="SW">Southwest</option>
+          
       </select>
     </div>
 
    </div>
  </section>
 
+<script type="text/javascript" language="javascript">
+   
+      var regions = {
+          northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
+          west: ["seattle", "portland", "lasvegas", "vancouver", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
+          south: ["sanjose", "dallas", "sanantonio", "oklahomacity", "houston", "elpaso", "birmingham", "neworleans", "louisville", "atlanta", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginiabeach", "washingtondc", "tampa"],
+          midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
+                            }
+    // Object.keys() - takes an object and returns an array of all the keys in the object
+    
+    $("#sel1").change(function (event) {
+        var key = event.target.value;
+        console.log(regionmap[key])
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: {
+                lat: regionmap[key].lat,
+                lng: regionmap[key].lng
+            },
+            mapTypeId: 'terrain'
+        });
 
+    });
+    // var str = "";
+  //   $( "select option:selected" ).each(function() {
+  //     str += $( this ).text() + " ";
+  //   });
+  //   $( "div" ).text( str );
+  // })
+  // .change();
 
+    </script>
+                    <!-- </div> -->
+  
 <!-- trending section-->
-  <div class="twitterranks"> 
-  	<ul class="topics">
-    	<li>
+<div class="twitterranks"> 
+    <ul class="topics">
+        <li>
         <div class="trending" id="div1">
           <span class="topic" id="topic1"> #food </span><br>
           <span id="city1"> New York City</span>
@@ -104,84 +128,18 @@
           <span id="city1"> Hoboken</span>
           <span id="pop1"> 13445 </span>
         </div>
-      </li>	
+      </li> 
     </ul>
   </div>
 <!-- end of trending topics-->
 </div>
-</div>
-<div class="googlemaps"> Map here </div>
-			
-		
-	</div>
-=======
-  <div class="panel-body">
-    <div class="panel panel-default" id="left-sidebar-page2">
-      <div class="panel-body">
-        <span id="name"> Name Here  </span>
-          <br>                 
-         <span class="location"> NY, New York</span><br>
-        <section id="left">
-    <!-- <div id="DropDownList"> -->
-<select id="DropDownList">
-                            </select>
-<script type="text/javascript" language="javascript">
-   
-var northeast ;
-      var regions = {
-          northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
-          west: ["seattle", "portland", "lasvegas", "vancouver", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
-          south: ["sanjose", "dallas", "sanantonio", "oklahomacity", "houston", "elpaso", "birmingham", "neworleans", "louisville", "atlanta", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginiabeach", "washingtondc", "tampa"],
-          midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
-
-                            }
-
-                            for (var i in regions){
-                                console.log(regions.northeast);
-                            }
-    // Object.keys() - takes an object and returns an array of all the keys in the object
-    // regions[0].onchange = function(){northeastmap};
-    var splitValues = Object.keys(regions);
-    for (var i = 0; i < splitValues.length; i++) {
-        var opt = document.createElement("option");
-
-        // Add an Option object to Drop Down/List Box
-        document.getElementById("DropDownList").options.add(opt);
-
-        // Assign text and value to Option object
-        opt.text = splitValues[i];
-            opt.value = splitValues[i];
-        }
-    </script>
-                    <!-- </div> -->
-  </section>
-<!-- trending section-->
-  <div class="twitterranks"> 
-    <ul class="topics">
-      <li><div class="trending" id="div1"> #Food </div></li>
-      <li><div class="trending" id="div2"> #Sports </div></li>
-      <li><div class="trending" id="div3"> #Politics </div></li>
-      <li><div class="trending" id="div4"> #Weather </div></li>
-      <li><div class="trending" id="div5"> #Travel </div></li>    
-    </ul>
-  </div>
-<!-- end of trending topics-->
-</div>
->>>>>>> ricardo_branch
 </div>
 <div id="map"> Map here 
       <script>
     // This example creates circles on the map, representing populations in North
     // America.
-
-<<<<<<< HEAD
-<!-- </div>
-</div>	 -->
-</div>
-=======
     // First, create an object containing LatLng and population for each city.
     var citymap = {
-
         vancouver: {
             center: {
                 lat: 49.25,
@@ -631,10 +589,28 @@ var northeast ;
             population: 658893
         }
     };
-
+    var regionmap = {
+        NE: {
+                lat: 37.090,
+                lng: -95.712
+            },
+        S: {
+                lat: 32.7767,
+                lng: -96.7970
+            },
+        W: {
+                lat: 33.7701,
+                lng: -118.1937
+            },
+        MW: {
+                lat: 47.090,
+                lng: -95.712
+            },
+    }
+    var map ;
     function initMap() {
         // Create the map.
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
             center: {
                 lat: 37.090,
@@ -642,10 +618,6 @@ var northeast ;
             },
             mapTypeId: 'terrain'
         });
-
-    // function topright() {
-    // var northeast = map.setCenter({lat: 41.714, lng: -74.005});
-    //     regions[0].on("click", function topright)}
         // Construct the circle for each value in citymap.
         // Note: We scale the area of the circle based on the population.
         for (var city in citymap) {
@@ -659,21 +631,36 @@ var northeast ;
                 map: map,
                 center: citymap[city].center,
                 radius: Math.sqrt(citymap[city].population) * 100
-            });
+            })
         }
-        function northeastmap() {
-            var northeast = new google.maps.Map(document.getElementById('map'),{
-                zoom: 7,
-                center: {lat: 41.714, lng: -74.005},
-                mapTypeId: 'terrain'
-            });
-        }
+        // var mapOptions = {
+        //     zoom: 5,
+        //     center: new google.maps.LatLng(37.09024, -100.712891),
+        //     panControl: false,
+        //     panControlOptions: {
+        //         position: google.maps.ControlPosition.BottomLEFT
+        //     },
+        //     zoomControl: true,
+        //     zoomControlOptions: {
+        //         style: google.maps.ZoomControlStyle.LARGE
+        //         position: google.maps.ControlPosition.RIGHT_CENTER
+        //     },
+        //     scaleControl: false
+        // }
+        // function zoomNE() {
+        //     regions.northeast =  new google.maps.Map(document.getElementById('map'), {
+        //     zoom: 7,
+        //     center: {
+        //         lat: 37.090,
+        //         lng: -95.712
+        //     },
+        //     mapTypeId: 'terrain'
+        // })
+        // };
+        
     }
-
-
     </script>
     </div>
->>>>>>> ricardo_branch
 <!--footer-->
   <footer class="footer">
     <div class="container" id="footer-text">
@@ -682,16 +669,9 @@ var northeast ;
         </p>
     </div>
   </footer>
-<<<<<<< HEAD
-
-<!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="assets/javascript/javascript.js"></script>
-=======
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSEFhd7Cf0qYOwO1kBiZlakxi99kjPrsY&callback=initMap">
     </script>
 
->>>>>>> ricardo_branch
   
 </body>
 </html>
