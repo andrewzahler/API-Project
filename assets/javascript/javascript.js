@@ -38,7 +38,7 @@ function getRandomInt(min, max) {
 function objectBuilder() {
     // init AJAX call to JSON file
     $.ajax({
-            url: "https://api.myjson.com/bins/17jmtn",
+            url: "https://api.myjson.com/bins/1c3nzr",
             method: "GET"
         })
         .done(function(response) {
@@ -58,6 +58,12 @@ function objectBuilder() {
             console.log(trendingMap);
         });
 };
+
+
+
+
+$("#sel1").change(function (event) {
+        var key = event.target.value;
 
 // Main function
 
