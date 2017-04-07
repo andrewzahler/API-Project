@@ -25,45 +25,66 @@ $("button").on("click", function() {
 
 // ------- start of object-building code ------ //
 
-var masterObject = {};
-var allCities = [];
-var cityFiveTrends = [];
-var singleTrend = {};
 
-function buildMasterObject() {
+function thunderCats () {
     $.ajax({
             url: "https://api.myjson.com/bins/17jmtn",
             method: "GET"
         })
         .done(function(response) {
             console.log(response);
-            // this stores all the cities from the response in an array, then adds that array to an object 
-            for (var i = 0; i < response.length; i++) {
-                var cityName = response[i].locations[0].name;
-                allCities.push(cityName);
-            };
-            masterObject.cities = allCities;
-            // I WANT THIS to iterate through each object in the array in the response, and on each one iterate through its array of trends, looking for the first five trends that have a real value for the property tweet_volume. THEN I WANT IT to grab the values of two properties for each of those five trends and store them in an object singleTrend, which will be pushed into the array cityFiveTrends iteratively.      
-            for (var i = 0; i < response.length; i++) {
-                for (x in response[i].trends) {
-                    if (response[i].trends[x].tweet_volume !== null && cityFiveTrends.length < 5) {
-                        singleTrend.name = response[i].trends[x].name;
-                        singleTrend.tweets = response[i].trends[x].tweet_volume;
-                        cityFiveTrends.push(singleTrend);
-                    };
-                };
-            };
-            console.log(cityFiveTrends);
-            // Finally I want this part to iterate through all the cities in the masterObject, adding the correct array of trends to each one 
-            for (var i = 0; i < masterObject.cities.length; i++) {
-                masterObject.cities[i].trends = cityFiveTrends;
-            };
 
-            console.log(masterObject);
+            // When a region is selected from dropdown on page 1 or page 2...
+
+            // grab the top trending topic for each city (name of city, name of topic, volume) from the JSON
+                // how in the what???
+
+            // store name of each topic, name of city and tweet volume in an array of objects
+
+
+
+
+
+//**------ Use this structure
+var trendingMap = {
+    "alberquerue":{
+        topTrend: 'trump',
+        tweet_volume: 500,
+        topTrends: [
+            {
+                trend: 'trump',
+                tweet_volume: 500
+            },
+            {
+                trend: 'trumps mom',
+                tweet_volume: 400
+            }
+        ]
+    }
+}
+
+//**------- use this
+var cityName = response[0].name
+
+trendingMap[cityName].topTrends[0].trend
+
+
+//*** and this
+// chooses the number value because short-circuit evaluation 
+var switcheroo = switcheroo || 300; 
+
+            // organize the object by tweet_volume
+
+            // define which cities are in what region; make an array of objects containing all top trending topics for the region
+
+            // pull from our array of trending topic objects the top trending topic per region, then the second, third, fourth, fifth
+
+            // plot them on a map, which will center on the region. ... Ricardo's javascript picks up here 
+
+            // Ricardo needs 
+            // path for the tweet_volume of each trending topic 
+            // path for city with top trending topic in each region
+            // paths for trending topics 2-5 for each region 
+
         });
-};
-
-$(document).ready(function() {
-    buildMasterObject();
-});
-// --------- end of object-building code -------- //
+    // --------- end of object-building code -------- //
