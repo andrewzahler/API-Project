@@ -1,4 +1,4 @@
-body {
+gobody {
 	/*padding: 20px;*/
 	}
 
@@ -80,26 +80,14 @@ body {
 
 #submit-btn {
 	margin-left:0px;
-<<<<<<< HEAD
-
 	color:white;
 	background-color:#f15700; 
-
-=======
-	background-color:#f15700;
-	color:white;
->>>>>>> master
 }
 
-.googlemaps {
+#map {
 	background-color: #ccc;
 	float: right;
-<<<<<<< HEAD
-
-	width: 78%;
-=======
 	width: 72%;
->>>>>>> master
 	height: 100%;
 	margin-left: 10px;
 	margin-top: 1px;
