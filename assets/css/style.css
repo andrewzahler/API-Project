@@ -77,6 +77,8 @@ body {
 
 #submit-btn {
 	margin-left:0px;
+	color:white;
+	background-color:#f15700; 
 }
 
 .googlemaps {
@@ -205,7 +207,7 @@ ul {
 /* end trends */
 
 #red {
-	color:red;
+	color:#800000;
 }
 
 #left {

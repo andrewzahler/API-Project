@@ -13,12 +13,12 @@ $("#submit-btn").on("click", function() {
 	
 	else {
 
-		// var storedName = localStorage.setItem("usernameVar", userName);
+		var storedName = localStorage.setItem("name", userName);
 
 
 		
 
-		$('#name-here').html(localStorage.getItem("usernameVar")); 
+		// $('#name-here').html(localStorage.getItem("usernameVar")); 
 	}
 });
 
