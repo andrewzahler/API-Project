@@ -8,10 +8,11 @@ body {
 	background: -moz-linear-gradient(left, #ff3232 0%, #e07b08 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(left, #ff3232 0%,#e07b08 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to right, #ff3232 0%,#e07b08 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#e07b08',GradientType=1 ); /* IE6-9 */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#e07b08',GradientType=1 ); 
+	/* IE6-9 */
 	width: 100%;
 }
-<<<<<<< HEAD
+
 
 .panel-title {
     margin-top: 20px;
@@ -21,24 +22,13 @@ body {
     color:white;
 }
 
-
-
-=======
-
-.panel-title {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    font-size: 24px;
-    color:white;
-}
 
 #p2dropdown {
 	padding-right:10px;
 	padding-left: 10px;
 }
 
->>>>>>> master
+
 #containerOfTheDocument {
 	float: none;
     margin: auto;
@@ -88,24 +78,27 @@ body {
 .region {
 	width: 100%;
 }
-<<<<<<< HEAD
+
+
+#submit-btn {
+	margin-left:0px;
+}
 .twitterranks {
 	margin-top: 80px;
 	/*float: left;*/
 	background-color: #ffffff;
 	width: 40%;
-=======
-
+}
 #submit-btn {
 	margin-left:0px;
->>>>>>> master
+
 }
 
 .googlemaps {
 	background-color: #ccc;
 	float: right;
-<<<<<<< HEAD
-	width: 58%;
+
+	width: 78%;
 	height: 100%;
 	margin-left: 10px;
 	margin-top: 1px;
@@ -183,12 +176,11 @@ ul {
 
 #submit-btn {
 	margin-left:0px;
-=======
 	width: 78%;
 	height: 100%;
 	margin-left: 10px;
 	margin-top: 1px;
->>>>>>> master
+
 }
 
 .dropdown {
