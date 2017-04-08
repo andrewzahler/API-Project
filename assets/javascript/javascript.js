@@ -74,22 +74,26 @@ $("#sel1").change(function(event) {
     if (key === "NE") {
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.northeast.length);
-            randomCities.push(regionsConverted.northeast[randomNum]);
+            var cityTemp = regionsConverted.northeast.splice(randomNum, 1)
+            randomCities.push(cityTemp);
         };
     } else if (key === "S") {
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.south.length);
-            randomCities.push(regionsConverted.south[randomNum]);
+            var cityTemp = regionsConverted.south.splice(randomNum, 1)
+            randomCities.push(cityTemp);
         };
     } else if (key === "W") {
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.west.length);
-            randomCities.push(regionsConverted.west[randomNum]);
+            var cityTemp = regionsConverted.west.splice(randomNum, 1)
+            randomCities.push(cityTemp);
         };
     } else if (key === "MW") {
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.midwest.length);
-            randomCities.push(regionsConverted.midwest[randomNum]);
+            var cityTemp = regionsConverted.midwest.splice(randomNum, 1)
+            randomCities.push(cityTemp);
         };
     };
     console.log(randomCities);
@@ -104,6 +108,8 @@ $("#sel1").change(function(event) {
         $("#pop" + (i + 1)).html(topicVolume);
     };
 });
+
+
 
 
 // Main function
