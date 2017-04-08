@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
   <title>Wildfire | Map </title>
-  <div class="container" id="header">
-        <h3 class="panel-title"> Wildfire</h3>
-    </div>
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
@@ -29,22 +29,40 @@
 </head>
 
 <body>
+<div class="container" id="header">
+    <div class="row">
+       <div class="col-sm-6">
+            <h3 class="panel-title"> Wildfire</h3>
+        </div>    
+        <div class="col-sm-6" id="usernameHeader">
+            <h2  id="nameGoesHere"></h2>
+            <script> ($('#nameGoesHere').html(localStorage.getItem("name"))).css('textTransform', 'capitalize'); 
+            </script>
+        <!-- </div> -->
+      </div>
+    </div>
+</div>
+
+
 <div class="container-fluid">
 
 <div class="panel panel-default" id="main-container-page2">
   <div class="panel-body" id="page2">
     <div class="panel panel-default" id="left-sidebar-page2">
-      <div class="panel-body">
-        <span id="name"></span>
-          <br>                 
+      <!-- <div class="panel-body"> -->
+        <div class="panel-heading" id="name"> 
+            <h4 id="red">What's Trending Now</h4>
+        </div>
+          <!-- <br>                  -->
          <span class="location"></span><br>
-       <!--  <section id="left"> -->
-    <!-- <div id="DropDownList"> -->
-<section id="left">
+        <section id="left">
+    <div id="dropDownList">
+
+ <section id="left">
      <div id="p2dropdown">
   <!--User Enters the Region-->
     <div class="form-group" id="region-select">
-      <label for="sel1"><h4 id="red">Trending Topics in this Region</h4></label>
+      <!-- <label for="sel1">    </label> --> 
       <select class="form-control" id="sel1">
           <option value="NE">Northeast</option>
           <option value="S">South</option>
@@ -52,10 +70,10 @@
           <option value="MW">Midwest</option>
           
       </select>
-    </div>
-
    </div>
  </section>
+
+
 
 <script type="text/javascript" language="javascript">
    
@@ -669,7 +687,7 @@
   <footer class="footer">
     <div class="container" id="footer-text">
         <p class="text-muted">
-            Team Names here &copy; 2017
+            Andrew Zahler / Ricardo Percy / Caitlin Reid &copy; 2017
         </p>
     </div>
   </footer>
