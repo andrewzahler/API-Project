@@ -4,12 +4,17 @@
 <head>
     <meta charset="utf-8">
     <title>Wildfire | Sign-in</title>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script> -->
+
+     <!--jQuery--> 
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+    <!--bootstrap CDN-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -18,6 +23,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
     
 
 </head>
@@ -49,6 +59,7 @@
             <h4> Name </h4>
             <div class="form-group">
                 <input type="text" class="form-control" id="textfield-name" >
+                <div id="warningDiv"></div>
             </div>
         </div>
 
@@ -58,10 +69,9 @@
             <label for="sel1"><h4>Select Your Region</h4></label>
             <select class="form-control" id="sel1">
                 <option value="NE">Northeast</option>
-                <option value="SE">Southeast</option>
+                <option value="SE">South</option>
                 <option value="MW">Midwest</option>
-                <option value="NW">Northwest</option>
-                <option value="SW">Southwest</option>
+                <option value="NW">West</option>
             </select>
 
 
@@ -83,6 +93,8 @@
 
         <br>
         <button type="submit" class="btn" id="submit-btn">Submit</button>
+        <a type="submit" class="btn" id="letsGo" href="projectmap.html">Let's Go</a>
+
 
       </div>
 
@@ -96,93 +108,6 @@
  </form>
 <!--end of form -->
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<!--footer-->
-  <footer class="footer">
-    <div class="container" id="footer-text">
-        <p class="text-muted">
-            Team Names here &copy; 2017
-        </p>
-    </div>
-=======
-=======
->>>>>>> master
-
-<!--- MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP MAP-->
-
-<div class="container-fluid" ID="page2"> <!--BEGINNING OF PAGE 2 CONTAINER -->
-
-    <div class="panel panel-default" id="main-container-page2">
-        <div class="panel-body">
-            <div class="panel panel-default" id="left-sidebar-page2">
-                <div class="panel-body">
-            <div id="name-here">  </div>
-              <br>                 
-             <span class="location"> NY, New York</span><br>
-                    <section id="left">
-        <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Location
-        <span class="caret"></span>
-      </button>
-        <br>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href="nyc">nyc</a></li>
-        <li><a href="dallas">dallas</a></li>
-        <li><a href="seattle">seattle</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
-      </ul>
-<<<<<<< HEAD
-    </div>
-  </section>
-<!-- trending section-->
-  <div class="twitterranks"> 
-    <ul class="topics">
-        <li><div class="trending" id="div1"> #Food </div></li>
-        <li><div class="trending" id="div2"> #Sports </div></li>
-        <li><div class="trending" id="div3"> #Politics </div></li>
-        <li><div class="trending" id="div4"> #Weather </div></li>
-        <li><div class="trending" id="div5"> #Travel </div></li>    
-    </ul>
-  </div>
-<!-- end of trending topics-->
-</div>
-</div>
-<div class="googlemaps"> Map here </div>
-            
-        
-    </div>
-=======
-    </div>
-  </section>
-<!-- trending section-->
-  <div class="twitterranks"> 
-    <ul class="topics">
-        <li><div class="trending" id="div1"> #Food </div></li>
-        <li><div class="trending" id="div2"> #Sports </div></li>
-        <li><div class="trending" id="div3"> #Politics </div></li>
-        <li><div class="trending" id="div4"> #Weather </div></li>
-        <li><div class="trending" id="div5"> #Travel </div></li>    
-    </ul>
-  </div>
-<!-- end of trending topics-->
-</div>
-</div>
-<div class="googlemaps"> Map here </div>
-            
-        
-    </div>
->>>>>>> master
-</div>
-</div> <!--END OF PAGE 2 CONTAINER -->
-
-<!--- END OF MAP // END OF MAP // END OF MAP // END OF MAP // -->
-
-
-
 </div>
 </div>
 </div>
@@ -191,27 +116,16 @@
   <footer class="footer">
     <div class="container" id="footer-text">
         <p class="text-muted">
-            Team Names here &copy; 2017
+            Andrew Zahler / Ricardo Percy / Caitlin Reid &copy; 2017
         </p>
     </div>
-<<<<<<< HEAD
->>>>>>> master
-=======
-=======
-<!--footer-->
-  <footer class="footer">
-    <div class="container" id="footer-text">
-        <p class="text-muted">
-            Team Names here &copy; 2017
-        </p>
-    </div>
->>>>>>> ricardo_branch
->>>>>>> master
   </footer>
 
-<!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="assets/javascript/javascript.js"></script>
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+<script src="assets/javascript/javascript.js"></script>
+
 
 </body>
 
