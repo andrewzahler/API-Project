@@ -79,8 +79,9 @@ function objectBuilder() {
                 trendingMap[cityName].volume = tweetVol;
             };
 
-            console.log(trendingMap)
+            console.log(trendingMap);
         };
+});
 };
 
 // populates the map sidebar with five random cities from selected region 
