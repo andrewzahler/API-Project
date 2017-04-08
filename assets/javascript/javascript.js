@@ -78,51 +78,52 @@ function objectBuilder() {
             } else {
                 trendingMap[cityName].volume = tweetVol;
             };
-// <<<<<<< caitlin-branch
-//         };
-//     });
-// };
 
-// // Can't sort the object of top trending topics, so this function is a step toward populating 
-// // the map sidebar with five random cities from whatever region is selected.  
-
-// =======
-//             console.log(trendingMap);
-
+            console.log(trendingMap);
         };
 });
+};
 
-// populates the map sidebar with five random cities from selected region  
+// populates the map sidebar with five random cities from selected region 
+// Need to find alternative to .splice and .pop to grab a value from the regionsConverted object and avoid getting it again 
 
 $("#sel1").change(function(event) {
     var key = event.target.value;
     console.log(key);
     if (key === "NE") {
+        randomCities = [];
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.northeast.length);
             var cityTemp = regionsConverted.northeast.splice(randomNum, 1)
             randomCities.push(cityTemp);
         };
     } else if (key === "S") {
+        randomCities = [];
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.south.length);
             var cityTemp = regionsConverted.south.splice(randomNum, 1)
             randomCities.push(cityTemp);
         };
     } else if (key === "W") {
+        randomCities = [];
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.west.length);
             var cityTemp = regionsConverted.west.splice(randomNum, 1)
             randomCities.push(cityTemp);
         };
     } else if (key === "MW") {
+        randomCities = [];
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.midwest.length);
             var cityTemp = regionsConverted.midwest.splice(randomNum, 1)
             randomCities.push(cityTemp);
+
         };
     };
     console.log(randomCities);
+    $("#topic").empty();
+    $("#city").empty();
+    $("#pop").empty();
     for (var i = 0; i < randomCities.length; i++) {
         var cityName = randomCities[i];
         var trendTopic = trendingMap[cityName].trend;
@@ -135,8 +136,6 @@ $("#sel1").change(function(event) {
     };
 });
 
-
-}
 
 // Main function
 objectBuilder();
