@@ -1,30 +1,41 @@
+
 // ------- validate text input on page 1 ------ //
 $("#submit-btn").on("click", function() {
 
-    // event.preventDefault();
+    event.preventDefault();
 
     var userName = $('#textfield-name').val();
 
-    // var storedName = localStorage.setItem("usernameVar", userName)
-
     if (userName === '') {
-        alert("Please enter your name!");
 
-        $(document).load("index.html");
+        $('#warningDiv').html('<div class="alert alert-warning"> Please enter your name</div>')
+
     } else {
-
         localStorage.setItem("name", userName);
 
-        // $('#name-here').html(localStorage.getItem("usernameVar")); 
+        $("#letsGo").css({"display": "inline"});
+
+        $("#submit-btn").css({"display": "none"});
+
+        $('#name').html(localStorage.getItem("name"));
+
+        // $('#letsGo').show($('#letsGo'));
     }
-});
+
+
+        
+
+    // $('#name-here').html(localStorage.getItem("usernameVar")); 
+})
+
 
 // ------- end validating input ------ //
 
 //******** Andrew's code begins here ********
 
 //*** variables
-// This is our main object of the top trending terms, organized by city. Each city is a child object with properties "trend" and "volume".   
+// This is our main object of the top trending terms, organized by city. 
+// Each city is a child object with properties "trend" and "volume".   
 var trendingMap = {};
 var randomCities = [];
 var regionsConverted = {
@@ -34,40 +45,47 @@ var regionsConverted = {
     midwest: ["Minneapolis", "Omaha", "Kansas City", "Chicago", "Detroit", "Cincinnati", "Cleveland", "Columbus", "Indianapolis", "Milwaukee"]
 };
 
-// functions ***
+// ******** functions ******** //
+
+// creates randomized integer for tweet_volume with "null" value
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
 };
 
-// 
+ 
 function objectBuilder() {
     // init AJAX call to JSON file
     $.ajax({
-            url: "https://api.myjson.com/bins/1c3nzr",
-            method: "GET"
-        })
-        .done(function(response) {
-            for (i in response) {
-                var cityName = response[i].locations[0].name;
-                var trendName = response[i].trends[0].name;
-                var tweetVol = response[i].trends[0].tweet_volume;
-                trendingMap[cityName] = {};
-                trendingMap[cityName].trend = trendName;
-                if (tweetVol === null) {
-                    var randomTweetVol = getRandomInt(1000, 30000);
-                    trendingMap[cityName].volume = randomTweetVol;
-                } else {
-                    trendingMap[cityName].volume = tweetVol;
-                };
+        url: "https://api.myjson.com/bins/1c3nzr",
+        method: "GET"
+    })
+    .done(function(response) {
+        for (i in response) {
+            var cityName = response[i].locations[0].name;
+            var trendName = response[i].trends[0].name;
+            var tweetVol = response[i].trends[0].tweet_volume;
+            trendingMap[cityName] = {};
+
+            trendingMap[cityName].trend = trendName; //assigning the property "trend"
+
+            // console.log(trendName);
+
+            if (tweetVol === null) {
+                var randomTweetVol = getRandomInt(1000, 30000);
+                trendingMap[cityName].volume = randomTweetVol;
+            } else {
+                trendingMap[cityName].volume = tweetVol;
             };
+
             console.log(trendingMap)
-        });
+        };
 };
 
 // populates the map sidebar with five random cities from selected region 
 // Need to find alternative to .splice and .pop to grab a value from the regionsConverted object and avoid getting it again 
+
 $("#sel1").change(function(event) {
     var key = event.target.value;
     console.log(key);
@@ -117,8 +135,7 @@ $("#sel1").change(function(event) {
     };
 });
 
-// Main function
 
+// Main function
 objectBuilder();
 
-//******** Andrew's code ends here **********

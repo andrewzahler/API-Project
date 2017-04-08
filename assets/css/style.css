@@ -1,4 +1,4 @@
-body {
+gobody {
 	/*padding: 20px;*/
 	}
 
@@ -12,6 +12,10 @@ body {
 	width: 100%;
 }
 
+.col-sx-3 {
+	clear:both;
+}
+
 
 .panel-title {
     margin-top: 20px;
@@ -19,6 +23,10 @@ body {
     margin-left: 20px;
     font-size: 24px;
     color:white;
+    float:left;
+    clear:right;
+    overflow: auto
+
 }
 
 #p2dropdown {
@@ -34,6 +42,9 @@ body {
 
 }
 
+#usernameHeader {
+	margin:auto;
+}
 .container2 {
 	float: right;
 	padding: 40px;
@@ -44,8 +55,35 @@ body {
 	margin: 20px;
 	width: 45%;
 	border:none;
-
 }	
+
+#warningDiv {
+	margin-top: 10px;
+}
+
+#letsGo {
+	background-color: red;
+	color:white;
+	float:right;
+	display:none;
+}
+
+/* name from local storage */
+#nameGoesHere {
+	font-size: 20px;
+	margin-left: 0px;
+	/*font-weight: bold;*/
+	/*padding-left: 20px; */
+	padding-right: 20px;
+	color:#800000;
+	padding-left: 30px;
+	/*padding-top: 20px;*/
+	/*padding-bottom: 15px;*/
+	float:right;
+	clear:left;
+	
+
+}
 
 .appdescription {
 	float: left;
@@ -53,7 +91,7 @@ body {
 	height: 170px;
 }
 .panel-body {
-	height: 500px;
+	height: 515px;
 }
 
 #form-panel {
@@ -80,26 +118,14 @@ body {
 
 #submit-btn {
 	margin-left:0px;
-<<<<<<< HEAD
-
 	color:white;
 	background-color:#f15700; 
-
-=======
-	background-color:#f15700;
-	color:white;
->>>>>>> master
 }
 
-.googlemaps {
+#map {
 	background-color: #ccc;
 	float: right;
-<<<<<<< HEAD
-
-	width: 78%;
-=======
 	width: 72%;
->>>>>>> master
 	height: 100%;
 	margin-left: 10px;
 	margin-top: 1px;
@@ -111,7 +137,12 @@ body {
 	float: left;
 	margin-bottom:;
 /*	width: 200px*/
-	width:100%;
+	width:100%;	
+}
+
+#dropDownList {
+	padding-left: 20px; 
+	padding-right: 20px;
 }
 
 #dropdownMenuButton {
@@ -169,11 +200,12 @@ body {
 .trending {
 	/*padding:10%;*/
 	margin:5px;
+	margin-top: 15px;
 	font-size:14px;
 }
 
 .twitterranks {
-	margin-top: 30px;
+	margin-top: -15px;
 	/*float: left;*/
 	background-color: #ffffff;
 	width: 100%;
@@ -243,5 +275,7 @@ ul {
 	}
 }
 
+.text-muted {
+	color: #bfbfbf;
 
-
+}
