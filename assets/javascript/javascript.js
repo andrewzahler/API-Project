@@ -1,12 +1,3 @@
-// function turnOnButton() {
-//     var x = $('#letsGo');
-//     if (x.style.display === 'none') {
-//         x.style.display = 'inline';
-//     } else {
-//         x.style.display = 'none';
-//     }
-// }
-
 
 // ------- validate text input on page 1 ------ //
 $("#submit-btn").on("click", function() {
@@ -98,8 +89,8 @@ function objectBuilder() {
 // =======
 //             console.log(trendingMap);
 
-        });
-};
+        };
+});
 
 // populates the map sidebar with five random cities from selected region  
 
@@ -145,10 +136,8 @@ $("#sel1").change(function(event) {
 });
 
 
-
+}
 
 // Main function
-
-
 
 objectBuilder();
