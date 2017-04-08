@@ -28,11 +28,11 @@ $("#submit-btn").on("click", function() {
 var trendingMap = {};
 var randomCities = [];
 var regionsConverted = {
-          northeast: ["New York", "Philadelphia", "Baltimore", "Pittsburgh", "Providence", "New Haven", "Harrisburg", "Boston"],
-          west: ["Seattle", "Portland", "Las Vegas", "Seattle", "Portland", "Los Angeles", "Sacramento", "Albuquerque", "Colorado Springs", "Denver", "Fresno", "Honolulu", "Long Beach", "Phoenix", "Salt Lake City", "Tucson", "San Diego"],
-          south: ["Dallas-Ft. Worth", "San Antonio", "Oklahoma City", "Houston", "El Paso", "Birmingham", "New Orleans", "Louisville", "Atlanta", "Tallahassee", "Miami", "Orlando", "Austin", "Charlotte", "Greensboro", "Jackson", "Jacksonville", "Memphis", "Nashville", "Raleigh", "Richmond", "Virginia Beach", "Washington", "Tampa"],
-          midwest: ["Minneapolis", "Omaha", "Kansas City", "Chicago", "Detroit", "Cincinnati", "Cleveland", "Columbus", "Indianapolis", "Milwaukee"]
-      };
+    northeast: ["New York", "Philadelphia", "Baltimore", "Pittsburgh", "Providence", "New Haven", "Harrisburg", "Boston"],
+    west: ["Seattle", "Portland", "Las Vegas", "Seattle", "Portland", "Los Angeles", "Sacramento", "Albuquerque", "Colorado Springs", "Denver", "Fresno", "Honolulu", "Long Beach", "Phoenix", "Salt Lake City", "Tucson", "San Diego"],
+    south: ["Dallas-Ft. Worth", "San Antonio", "Oklahoma City", "Houston", "El Paso", "Birmingham", "New Orleans", "Louisville", "Atlanta", "Tallahassee", "Miami", "Orlando", "Austin", "Charlotte", "Greensboro", "Jackson", "Jacksonville", "Memphis", "Nashville", "Raleigh", "Richmond", "Virginia Beach", "Washington", "Tampa"],
+    midwest: ["Minneapolis", "Omaha", "Kansas City", "Chicago", "Detroit", "Cincinnati", "Cleveland", "Columbus", "Indianapolis", "Milwaukee"]
+};
 
 // functions ***
 function getRandomInt(min, max) {
@@ -62,6 +62,8 @@ function objectBuilder() {
                     trendingMap[cityName].volume = tweetVol;
                 };
             };
+            console.log(trendingMap);
+
         });
 };
 
@@ -90,15 +92,16 @@ $("#sel1").change(function(event) {
             randomCities.push(regionsConverted.midwest[randomNum]);
         };
     };
-    //**This is where it stops working**
+    console.log(randomCities);
     for (var i = 0; i < randomCities.length; i++) {
         var cityName = randomCities[i];
         var trendTopic = trendingMap[cityName].trend;
-        var topicVolume = trendingMap[cityName].volume;        
-        console.log(trendingMap);
-        $("#topic" + i+1).html(trendTopic);
-        $("#city" + i+1).html(cityName);
-        $("#pop" + i+1).html(topicVolume);
+        var topicVolume = trendingMap[cityName].volume;
+        console.log(topicVolume);
+        //**This is where it stops working //
+        $("#topic" + (i + 1)).html(trendTopic);
+        $("#city" + (i + 1)).html(cityName);
+        $("#pop" + (i + 1)).html(topicVolume);
     };
 });
 
