@@ -77,12 +77,22 @@
 
 <script type="text/javascript" language="javascript">
    
-      var regions = {
-          northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
-          west: ["seattle", "portland", "lasvegas", "vancouver", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
-          south: ["sanjose", "dallas", "sanantonio", "oklahomacity", "houston", "elpaso", "birmingham", "neworleans", "louisville", "atlanta", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginiabeach", "washingtondc", "tampa"],
-          midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
-                            }
+  var regions = {
+      northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
+      west: ["seattle", "portland", "lasvegas", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
+      south: ["sanjose", "dallas", "sanantonio", "oklahomacity", "houston", "elpaso", "birmingham", "neworleans", "louisville", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginiabeach", "washingtondc", "tampa"],
+      midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
+                }
+
+
+    // creates randomized integer for tweet_volume with "null" value
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    };
+
+
     // Object.keys() - takes an object and returns an array of all the keys in the object
     
     $("#sel1").change(function (event) {
@@ -158,26 +168,12 @@
     // This example creates circles on the map, representing populations in North America.
     // First, create an object containing LatLng and population for each city.
     var citymap = {
-        vancouver: {
-            center: {
-                lat: 49.25,
-                lng: -123.1
-            },
-            population: 603502
-        },
         albuquerque: {
             center: {
                 lat: 35.107049,
                 lng: -106.616063
             },
             population: 908252
-        },
-        atlanta: {
-            center: {
-                lat: 33.7490,
-                lng: -84.3880
-            },
-            population: 463878
         },
         austin: {
             center: {
@@ -627,6 +623,9 @@
     }
     var map ;
     function initMap() {
+        // Global variable for accessing json
+        var trendingMap = {};
+    
         // Create the map.
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
@@ -638,7 +637,56 @@
         });
         // Construct the circle for each value in citymap.
         // Note: We scale the area of the circle based on the population.
+        // Extract out the city for each JSON, loop through JSON object. For each key, get the tweet volume and replace population 
+
+        // init AJAX call to JSON file
+
+
+            $.ajax({
+                url: "https://api.myjson.com/bins/1c3nzr",
+                method: "GET",
+                async: false
+            })
+            .done(function(response) {
+                for (i in response) {
+                    var cityName = response[i].locations[0].name.toLowerCase();
+                    var trendName = response[i].trends[0].name;
+                    var tweetVol = response[i].trends[0].tweet_volume;
+                    trendingMap[cityName] = {};
+
+                    trendingMap[cityName].trend = trendName; //assigning the property "trend"
+
+                    // console.log(trendName);
+
+                    if (tweetVol === null) {
+                        var randomTweetVol = getRandomInt(1000, 30000);
+                        trendingMap[cityName].volume = randomTweetVol;
+                    } else {
+                        trendingMap[cityName].volume = tweetVol;
+                    };
+                }
+            })
+
+        console.log(trendingMap);
+
         for (var city in citymap) {
+
+            var cleanedCity = city.toLowerCase();
+            cleanedCity = cleanedCity.split(" ").join("");
+
+            console.log(city);
+            console.log(cleanedCity);
+            console.log(trendingMap[cleanedCity]);
+
+            if(trendingMap[cleanedCity] != undefined && trendingMap[cleanedCity].hasOwnProperty("volume")){
+
+            // for (var city in trendingMap) {
+            //     console.log("hello")
+            //     console.log(trendingMap[city])
+            // }
+            // LOOP THROUGH THE JSON AND SEARCH FOR WHERE city == key.
+            // WHEN YOU FIND A MATCH set var tweetAmount = "that value"
+
             // Add the circle for this city to the map.
             var cityCircle = new google.maps.Circle({
                 strokeColor: '#FF0000',
@@ -648,7 +696,7 @@
                 fillOpacity: 0.35,
                 map: map,
                 center: citymap[city].center,
-                radius: Math.sqrt(citymap[city].population) * 100
+                radius: Math.sqrt(trendingMap[cleanedCity].volume) * 100
             })
         }
         // var mapOptions = {
@@ -675,6 +723,8 @@
         //     mapTypeId: 'terrain'
         // })
         // };
+        }
+
         
     }
     </script>
