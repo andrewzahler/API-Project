@@ -5,20 +5,30 @@ $("#submit-btn").on("click", function() {
 
     var userName = $('#textfield-name').val();
 
+    var regionSelect = $('#sel1').val();
+
     if (userName === '') {
 
-        $('#warningDiv').html('<div class="alert alert-warning"> Please enter your name</div>')
+        $('#warningDiv1').html('<div class="alert alert-warning"> Please enter your name.</div>')
+    }
 
-    } else {
+    if (regionSelect == 'select'){
+        $('#warningDiv2').html('<div class="alert alert-warning"> Please select a region.</div>')
+    }
+
+    else {
         localStorage.setItem("name", userName);
-
-        $("#letsGo").css({ "display": "inline" });
-
-        $("#submit-btn").css({ "display": "none" });
-
-        $('#name').html(localStorage.getItem("name"));
-
+        localStorage.setItem("region", regionSelect)
         // $('#letsGo').show($('#letsGo'));
+
+        if ((localStorage.getItem("name")!='') && (localStorage.getItem("region") !='')) {
+            $("#letsGo").css({ "display": "inline" });
+
+            $("#submit-btn").css({ "display": "none" });
+
+            $('#name').html(localStorage.getItem("name"));
+        }
+        
     }
 
 
@@ -642,27 +652,27 @@ function initMap() {
         //     mapTypeId: 'terrain'
         // })
         // };
-    }
+    };
+    var regionInput = localStorage.getItem("region");
+    var regionArr;
+    if (regionInput === "NE") {
+        regionArr = regionsForSidebar.northeast;
+    } else if (regionInput === "S") {
+        regionArr = regionsForSidebar.south;
+    } else if (regionInput === "W") {
+        regionArr = regionsForSidebar.west;
+    } else if (regionInput === "MW") {
+        regionArr = regionsForSidebar.midwest;
+    };
+    fillSidebar(regionArr);
+};
 
-
-}
 // populates the map sidebar with five random cities from selected region 
 
-$("#sel1").change(function(event) {
+function fillSidebar(regionArr) {
     $("#topic").empty();
     $("#city").empty();
     $("#pop").empty();
-    var key = event.target.value;
-    var regionArr;
-    if (key === "NE") {
-        regionArr = regionsForSidebar.northeast;
-    } else if (key === "S") {
-        regionArr = regionsForSidebar.south;
-    } else if (key === "W") {
-        regionArr = regionsForSidebar.west;
-    } else if (key === "MW") {
-        regionArr = regionsForSidebar.midwest;
-    };
     var regionTemp = [];
     randomCities = [];
     for (var i = 0; i < regionArr.length; i++) {
@@ -703,6 +713,21 @@ $("#sel1").change(function(event) {
         $("#city" + (i + 1)).html(printName);
         $("#pop" + (i + 1)).html(volumePretty);
     };
+};
+
+$("#sel1").change(function(event) {
+    var key = event.target.value;
+    var regionArr;
+    if (key === "NE") {
+        regionArr = regionsForSidebar.northeast;
+    } else if (key === "S") {
+        regionArr = regionsForSidebar.south;
+    } else if (key === "W") {
+        regionArr = regionsForSidebar.west;
+    } else if (key === "MW") {
+        regionArr = regionsForSidebar.midwest;
+    };
+    fillSidebar();
 });
 
 //*** MAIN PROCESS
