@@ -5,20 +5,30 @@ $("#submit-btn").on("click", function() {
 
     var userName = $('#textfield-name').val();
 
+    var regionSelect = $('#sel1').val();
+
     if (userName === '') {
 
-        $('#warningDiv').html('<div class="alert alert-warning"> Please enter your name</div>')
+        $('#warningDiv1').html('<div class="alert alert-warning"> Please enter your name.</div>')
+    }
 
-    } else {
+    if (regionSelect == 'select'){
+        $('#warningDiv2').html('<div class="alert alert-warning"> Please select a region.</div>')
+    }
+
+    else {
         localStorage.setItem("name", userName);
-
-        $("#letsGo").css({ "display": "inline" });
-
-        $("#submit-btn").css({ "display": "none" });
-
-        $('#name').html(localStorage.getItem("name"));
-
+        localStorage.setItem("region", regionSelect)
         // $('#letsGo').show($('#letsGo'));
+
+        if ((localStorage.getItem("name")!='') && (localStorage.getItem("region") !='')) {
+            $("#letsGo").css({ "display": "inline" });
+
+            $("#submit-btn").css({ "display": "none" });
+
+            $('#name').html(localStorage.getItem("name"));
+        }
+        
     }
 
 
