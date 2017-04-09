@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
- <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-
   <title>Wildfire | Map </title>
-  
+  <div class="container" id="header">
+        <h3 class="panel-title"> Wildfire</h3>
+    </div>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
@@ -29,151 +29,86 @@
 </head>
 
 <body>
-<div class="container" id="header">
-    <div class="row">
-       <div class="col-sm-6">
-            <h3 class="panel-title"> Wildfire</h3>
-        </div>    
-        <div class="col-sm-6" id="usernameHeader">
-            <h2  id="nameGoesHere"></h2>
-            <script> ($('#nameGoesHere').html(localStorage.getItem("name"))).css('textTransform', 'capitalize'); 
-            </script>
-        <!-- </div> -->
-      </div>
-    </div>
-</div>
-
-
 <div class="container-fluid">
 
 <div class="panel panel-default" id="main-container-page2">
-  <div class="panel-body" id="page2">
+  <div class="panel-body">
     <div class="panel panel-default" id="left-sidebar-page2">
-      <!-- <div class="panel-body"> -->
-        <div class="panel-heading" id="name"> 
-            <h4 id="red">What's Trending Now</h4>
-        </div>
-          <!-- <br>                  -->
-         <span class="location"></span><br>
+      <div class="panel-body">
+        <span id="name"> Name Here  </span>
+          <br>                 
+         <span class="location"> NY, New York</span><br>
         <section id="left">
-    <div id="dropDownList">
-
- <section id="left">
-     <div id="p2dropdown">
-  <!--User Enters the Region-->
-    <div class="form-group" id="region-select">
-      <!-- <label for="sel1">    </label> --> 
-      <select class="form-control" id="sel1">
-          <option value="NE">Northeast</option>
-          <option value="S">South</option>
-          <option value="W">West</option>
-          <option value="MW">Midwest</option>
-          
-      </select>
-   </div>
- </section>
-
-
-
+    <!-- <div id="DropDownList"> -->
+<select id="DropDownList">
+                            </select>
 <script type="text/javascript" language="javascript">
    
-  var regions = {
-      northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
-      west: ["seattle", "portland", "lasvegas", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
-      south: ["sanjose", "dallas", "sanantonio", "oklahomacity", "houston", "elpaso", "birmingham", "neworleans", "louisville", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginiabeach", "washingtondc", "tampa"],
-      midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
-                }
 
+      var regions = {
+          northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
+          west: ["seattle", "portland", "lasvegas", "vancouver", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
+          south: ["sanjose", "dallas", "sanantonio", "oklahomacity", "houston", "elpaso", "birmingham", "neworleans", "louisville", "atlanta", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginiabeach", "washingtondc", "tampa"],
+          midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
 
-    // creates randomized integer for tweet_volume with "null" value
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min;
-    };
-
-
+                            }
     // Object.keys() - takes an object and returns an array of all the keys in the object
     
-    $("#sel1").change(function (event) {
-        var key = event.target.value;
-        console.log(regionmap[key])
-        map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: {
-                lat: regionmap[key].lat,
-                lng: regionmap[key].lng
-            },
-            mapTypeId: 'terrain'
-        });
-        //*** Andrew function; pulls and sorts trending data into new object ***// 
-        objectBuilder();
-    });
-    // var str = "";
-  //   $( "select option:selected" ).each(function() {
-  //     str += $( this ).text() + " ";
-  //   });
-  //   $( "div" ).text( str );
-  // })
-  // .change();
+    var splitValues = Object.keys(regions);
+    for (var i = 0; i < splitValues.length; i++) {
+        var opt = document.createElement("option");
+
+        // Add an Option object to Drop Down/List Box
+        document.getElementById("DropDownList").options.add(opt);
+
+        // Assign text and value to Option object
+        opt.text = splitValues[i];
+            opt.value = splitValues[i];
+        }
     </script>
-  
+                    <!-- </div> -->
+  </section>
 <!-- trending section-->
-<div class="twitterranks"> 
+  <div class="twitterranks"> 
     <ul class="topics">
-        <li>
-        <div class="trending" id="div1">
-          <span class="topic" id="topic1"> #food </span><br>
-          <span id="city1"> New York City</span>
-          <span id="pop1"> 53445 </span>
-        </div>
-      </li>
-      <li>
-        <div class="trending" id="div2">
-          <span class="topic" id="topic2"> #steakpizza </span><br>
-          <span id="city2"> Jersey City</span>
-          <span id="pop2"> 43445 </span>
-        </div>
-      </li>
-      <li>
-        <div class="trending" id="div3">
-          <span class="topic" id="topic3"> #kimKardashian </span><br>
-          <span id="city3"> Hudson</span>
-          <span id="pop3"> 33445 </span>
-        </div>
-      </li>
-      <li>
-        <div class="trending" id="div4">
-          <span class="topic" id="topic4"> #williamcarloswilliams </span><br>
-          <span id="city4"> Patterson</span>
-          <span id="pop4"> 23445 </span>
-        </div>
-      </li>
-      <li>
-        <div class="trending" id="div5">
-          <span class="topic" id="topic5"> #daydrinking </span><br>
-          <span id="city5"> Hoboken</span>
-          <span id="pop5"> 13445 </span>
-        </div>
-      </li> 
+      <li><div class="trending" id="div1"> #Food </div></li>
+      <li><div class="trending" id="div2"> #Sports </div></li>
+      <li><div class="trending" id="div3"> #Politics </div></li>
+      <li><div class="trending" id="div4"> #Weather </div></li>
+      <li><div class="trending" id="div5"> #Travel </div></li>    
     </ul>
   </div>
-</div>
-</div>
-
 <!-- end of trending topics-->
-
+</div>
+</div>
 <div id="map"> Map here 
       <script>
-    // This example creates circles on the map, representing populations in North America.
+    // This example creates circles on the map, representing populations in North
+    // America.
+
     // First, create an object containing LatLng and population for each city.
     var citymap = {
+
+        vancouver: {
+            center: {
+                lat: 49.25,
+                lng: -123.1
+            },
+            population: 603502
+        },
         albuquerque: {
             center: {
                 lat: 35.107049,
                 lng: -106.616063
             },
             population: 908252
+        },
+        atlanta: {
+            center: {
+                lat: 33.7490,
+                lng: -84.3880
+            },
+            population: 463878
         },
         austin: {
             center: {
@@ -603,31 +538,10 @@
             population: 658893
         }
     };
-    var regionmap = {
-        NE: {
-                lat: 37.090,
-                lng: -95.712
-            },
-        S: {
-                lat: 32.7767,
-                lng: -96.7970
-            },
-        W: {
-                lat: 33.7701,
-                lng: -118.1937
-            },
-        MW: {
-                lat: 47.090,
-                lng: -95.712
-            },
-    }
-    var map ;
+
     function initMap() {
-        // Global variable for accessing json
-        var trendingMap = {};
-    
         // Create the map.
-        map = new google.maps.Map(document.getElementById('map'), {
+        var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
             center: {
                 lat: 37.090,
@@ -635,58 +549,10 @@
             },
             mapTypeId: 'terrain'
         });
+
         // Construct the circle for each value in citymap.
         // Note: We scale the area of the circle based on the population.
-        // Extract out the city for each JSON, loop through JSON object. For each key, get the tweet volume and replace population 
-
-        // init AJAX call to JSON file
-
-
-            $.ajax({
-                url: "https://api.myjson.com/bins/1c3nzr",
-                method: "GET",
-                async: false
-            })
-            .done(function(response) {
-                for (i in response) {
-                    var cityName = response[i].locations[0].name.toLowerCase();
-                    var trendName = response[i].trends[0].name;
-                    var tweetVol = response[i].trends[0].tweet_volume;
-                    trendingMap[cityName] = {};
-
-                    trendingMap[cityName].trend = trendName; //assigning the property "trend"
-
-                    // console.log(trendName);
-
-                    if (tweetVol === null) {
-                        var randomTweetVol = getRandomInt(1000, 30000);
-                        trendingMap[cityName].volume = randomTweetVol;
-                    } else {
-                        trendingMap[cityName].volume = tweetVol;
-                    };
-                }
-            })
-
-        console.log(trendingMap);
-
         for (var city in citymap) {
-
-            var cleanedCity = city.toLowerCase();
-            cleanedCity = cleanedCity.split(" ").join("");
-
-            console.log(city);
-            console.log(cleanedCity);
-            console.log(trendingMap[cleanedCity]);
-
-            if(trendingMap[cleanedCity] != undefined && trendingMap[cleanedCity].hasOwnProperty("volume")){
-
-            // for (var city in trendingMap) {
-            //     console.log("hello")
-            //     console.log(trendingMap[city])
-            // }
-            // LOOP THROUGH THE JSON AND SEARCH FOR WHERE city == key.
-            // WHEN YOU FIND A MATCH set var tweetAmount = "that value"
-
             // Add the circle for this city to the map.
             var cityCircle = new google.maps.Circle({
                 strokeColor: '#FF0000',
@@ -696,53 +562,22 @@
                 fillOpacity: 0.35,
                 map: map,
                 center: citymap[city].center,
-                radius: Math.sqrt(trendingMap[cleanedCity].volume) * 100
-            })
+                radius: Math.sqrt(citymap[city].population) * 100
+            });
         }
-        // var mapOptions = {
-        //     zoom: 5,
-        //     center: new google.maps.LatLng(37.09024, -100.712891),
-        //     panControl: false,
-        //     panControlOptions: {
-        //         position: google.maps.ControlPosition.BottomLEFT
-        //     },
-        //     zoomControl: true,
-        //     zoomControlOptions: {
-        //         style: google.maps.ZoomControlStyle.LARGE
-        //         position: google.maps.ControlPosition.RIGHT_CENTER
-        //     },
-        //     scaleControl: false
-        // }
-        // function zoomNE() {
-        //     regions.northeast =  new google.maps.Map(document.getElementById('map'), {
-        //     zoom: 7,
-        //     center: {
-        //         lat: 37.090,
-        //         lng: -95.712
-        //     },
-        //     mapTypeId: 'terrain'
-        // })
-        // };
-        }
-
-        
     }
     </script>
     </div>
-  </div>
- </div>
-</div>
 <!--footer-->
   <footer class="footer">
     <div class="container" id="footer-text">
         <p class="text-muted">
-            Andrew Zahler / Ricardo Percy / Caitlin Reid &copy; 2017
+            Team Names here &copy; 2017
         </p>
     </div>
   </footer>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSEFhd7Cf0qYOwO1kBiZlakxi99kjPrsY&callback=initMap">
     </script>
-<script src="assets/javascript/javascript.js"></script>
 
   
 </body>

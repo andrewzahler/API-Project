@@ -41,7 +41,7 @@ var randomCities = [];
 var regionsConverted = {
     northeast: ["New York", "Philadelphia", "Baltimore", "Pittsburgh", "Providence", "New Haven", "Harrisburg", "Boston"],
     west: ["Seattle", "Portland", "Las Vegas", "Seattle", "Portland", "Los Angeles", "Sacramento", "Albuquerque", "Colorado Springs", "Denver", "Fresno", "Honolulu", "Long Beach", "Phoenix", "Salt Lake City", "Tucson", "San Diego"],
-    south: ["Dallas-Ft. Worth", "San Antonio", "Oklahoma City", "Houston", "El Paso", "Birmingham", "New Orleans", "Louisville", "Atlanta", "Tallahassee", "Miami", "Orlando", "Austin", "Charlotte", "Greensboro", "Jackson", "Jacksonville", "Memphis", "Nashville", "Raleigh", "Richmond", "Virginia Beach", "Washington", "Tampa"],
+    south: ["Dallas-Ft. Worth", "San Antonio", "Oklahoma City", "Houston", "El Paso", "Birmingham", "New Orleans", "Louisville", "Tallahassee", "Miami", "Orlando", "Austin", "Charlotte", "Greensboro", "Jackson", "Jacksonville", "Memphis", "Nashville", "Raleigh", "Richmond", "Virginia Beach", "Washington", "Tampa"],
     midwest: ["Minneapolis", "Omaha", "Kansas City", "Chicago", "Detroit", "Cincinnati", "Cleveland", "Columbus", "Indianapolis", "Milwaukee"]
 };
 
@@ -78,51 +78,54 @@ function objectBuilder() {
             } else {
                 trendingMap[cityName].volume = tweetVol;
             };
-// <<<<<<< caitlin-branch
-//         };
-//     });
-// };
-
-// // Can't sort the object of top trending topics, so this function is a step toward populating 
-// // the map sidebar with five random cities from whatever region is selected.  
-
-// =======
-//             console.log(trendingMap);
 
         };
 });
+};
 
-// populates the map sidebar with five random cities from selected region  
+// populates the map sidebar with five random cities from selected region 
+// Need to find alternative to .splice and .pop to grab a value from the regionsConverted object and avoid getting it again 
 
 $("#sel1").change(function(event) {
     var key = event.target.value;
     console.log(key);
     if (key === "NE") {
+        randomCities = [];
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.northeast.length);
-            var cityTemp = regionsConverted.northeast.splice(randomNum, 1)
+            var cityTemp = regionsConverted.northeast.slice(randomNum, randomNum + 1);
             randomCities.push(cityTemp);
         };
     } else if (key === "S") {
+        randomCities = [];
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.south.length);
-            var cityTemp = regionsConverted.south.splice(randomNum, 1)
+            var cityTemp = regionsConverted.south.slice(randomNum, randomNum + 1);
             randomCities.push(cityTemp);
         };
     } else if (key === "W") {
+        randomCities = [];
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.west.length);
-            var cityTemp = regionsConverted.west.splice(randomNum, 1)
+            var cityTemp = regionsConverted.west.slice(randomNum, randomNum + 1);
             randomCities.push(cityTemp);
         };
     } else if (key === "MW") {
+        randomCities = [];
         for (var i = 0; i < 5; i++) {
             var randomNum = getRandomInt(0, regionsConverted.midwest.length);
-            var cityTemp = regionsConverted.midwest.splice(randomNum, 1)
-            randomCities.push(cityTemp);
+            var cityTemp = regionsConverted.midwest.slice(randomNum, randomNum + 1);
+            if (randomCities.indexOf(cityTemp) == -1) 
+                randomCities.push(cityTemp);
+            else {
+                cityTemp = regionsConverted.midwest.slice(randomNum - 1, randomNum);
+            }
         };
     };
     console.log(randomCities);
+    $("#topic").empty();
+    $("#city").empty();
+    $("#pop").empty();
     for (var i = 0; i < randomCities.length; i++) {
         var cityName = randomCities[i];
         var trendTopic = trendingMap[cityName].trend;
@@ -136,8 +139,6 @@ $("#sel1").change(function(event) {
 });
 
 
-}
-
 // Main function
-
 objectBuilder();
+
