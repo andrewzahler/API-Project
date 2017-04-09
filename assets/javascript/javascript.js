@@ -648,87 +648,65 @@ function initMap() {
 }
 // populates the map sidebar with five random cities from selected region 
 
-
-
 $("#sel1").change(function(event) {
-    var key = event.target.value;
-    console.log(key);
-
-    if (key === "NE") {
-        var northeastTemp = [];
-        randomCities = [];
-        for (var i = 0; i < regionsForSidebar.northeast.length; i++) {
-            var city = regionsForSidebar.northeast[i];
-            // var cleanedCity = city.split(" ").join("");
-            northeastTemp.push(city);
-        };
-        console.log(northeastTemp);
-        for (var i = 0; i < 5; i++) {
-            var randomNum = getRandomInt(0, regionsForSidebar.northeast.length);
-            var cityTemp = regionsForSidebar.northeast.slice(randomNum, randomNum + 1);
-            randomCities.push(cityTemp);
-        };
-    } else if (key === "S") {
-        var southTemp = [];
-        randomCities = [];
-        for (var i = 0; i < regionsForSidebar.south.length; i++) {
-            var city = regionsForSidebar.south[i];
-            // var cleanedCity = city.split(" ").join("");
-            southTemp.push(city);
-        };
-        console.log(southTemp);
-        for (var i = 0; i < 5; i++) {
-            var randomNum = getRandomInt(0, regionsForSidebar.south.length);
-            var cityTemp = regionsForSidebar.south.slice(randomNum, randomNum + 1);
-            randomCities.push(cityTemp);
-        };
-    } else if (key === "W") {
-        var westTemp = [];
-        randomCities = [];
-        for (var i = 0; i < regionsForSidebar.west.length; i++) {
-            var city = regionsForSidebar.west[i];
-            // var cleanedCity = city.split(" ").join("");
-            westTemp.push(city);
-        };
-        console.log(westTemp);
-        for (var i = 0; i < 5; i++) {
-            var randomNum = getRandomInt(0, regionsForSidebar.west.length);
-            var cityTemp = regionsForSidebar.west.slice(randomNum, randomNum + 1);
-            randomCities.push(cityTemp);
-        };
-    } else if (key === "MW") {
-        var midwestTemp = [];
-        randomCities = [];
-        for (var i = 0; i < regionsForSidebar.midwest.length; i++) {
-            var city = regionsForSidebar.midwest[i];
-            // var cleanedCity = city.split(" ").join("");
-            midwestTemp.push(city);
-        };
-        console.log(midwestTemp);
-        for (var i = 0; i < 5; i++) {
-            var randomNum = getRandomInt(0, regionsForSidebar.midwest.length);
-            var cityTemp = regionsForSidebar.midwest.slice(randomNum, randomNum + 1);
-            randomCities.push(cityTemp);
-        };
-
-    };
     $("#topic").empty();
     $("#city").empty();
     $("#pop").empty();
+    var key = event.target.value;
+    var regionArr;
+    if (key === "NE") {
+        regionArr = regionsForSidebar.northeast;
+    } else if (key === "S") {
+        regionArr = regionsForSidebar.south;
+    } else if (key === "W") {
+        regionArr = regionsForSidebar.west;
+    } else if (key === "MW") {
+        regionArr = regionsForSidebar.midwest;
+    };
+    var regionTemp = [];
+    randomCities = [];
+    for (var i = 0; i < regionArr.length; i++) {
+        var city = regionArr[i];
+        regionTemp.push(city);
+
+    };
+    for (var i = 0; i < 5; i++) {
+        var cityTemp = regionArr.shift();
+        randomCities.push(cityTemp);
+        randomCities.reverse();
+    };
     for (var i = 0; i < randomCities.length; i++) {
+        function titleCase(str) {
+            str = str.toLowerCase().split(' ');
+            for (var i = 0; i < str.length; i++) {
+                str[i] = str[i].split('');
+                str[i][0] = str[i][0].toUpperCase();
+                str[i] = str[i].join('');
+            }
+            return str.join(' ');
+        };
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        };
         var cityName = randomCities[i];
-        // var printName = cityName.toUpperCase(); 
         var trendTopic = trendingMap[cityName].trend;
         var topicVolume = trendingMap[cityName].volume;
+        var volumePretty = numberWithCommas(topicVolume);
+        
+        if (cityName == "dallas-ft. worth") {
+            var printName = "Dallas-Ft. Worth";
+        } else {
+            var printName = titleCase(cityName);
+        };
+        
         $("#topic" + (i + 1)).html(trendTopic);
-        $("#city" + (i + 1)).html(cityName);
-        $("#pop" + (i + 1)).html(topicVolume);
+        $("#city" + (i + 1)).html(printName);
+        $("#pop" + (i + 1)).html(volumePretty);
     };
 });
 
 //*** MAIN PROCESS
 
 $("#letsGo").on("click", function() {
-    console.log("success!");
     initMap();
 });
