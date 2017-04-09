@@ -30,15 +30,10 @@ $("#submit-btn").on("click", function() {
         }
         
     }
-
-
-
-
-    // $('#name-here').html(localStorage.getItem("usernameVar")); 
 });
 
 
-// ------- end validating input ------ //
+// ------- end validating input (page1)------ //
 
 
 // ------- start building map for page 2 ----- //
