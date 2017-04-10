@@ -1,52 +1,8 @@
-// ------- validate text input on page 1 ------ //
-$("#submit-btn").on("click", function() {
-
-    event.preventDefault();
-
-    var userName = $('#textfield-name').val();
-
-    var regionSelect = $('#sel1').val();
-
-    if (userName === '') {
-
-        $('#warningDiv1').html('<div class="alert alert-warning"> Please enter your name.</div>')
-    }
-
-    if (regionSelect == 'select'){
-        $('#warningDiv2').html('<div class="alert alert-warning"> Please select a region.</div>')
-    }
-
-    else {
-        localStorage.setItem("name", userName);
-        localStorage.setItem("region", regionSelect)
-        // $('#letsGo').show($('#letsGo'));
-
-        if ((localStorage.getItem("name")!='') && (localStorage.getItem("region") !='')) {
-            $("#letsGo").css({ "display": "inline" });
-
-            $("#submit-btn").css({ "display": "none" });
-
-            $('#name').html(localStorage.getItem("name"));
-        }
-        
-    }
-
-
-
-
-    // $('#name-here').html(localStorage.getItem("usernameVar")); 
-});
-
-
-// ------- end validating input ------ //
-
-
-// ------- start building map for page 2 ----- //
-
 //*** VARIABLES
 
 var trendingMap = {};
 var randomCities = [];
+var regionInput;
 var regions = {
     northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
     west: ["seattle", "portland", "lasvegas", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
@@ -513,12 +469,51 @@ var regionmap = {
     MW: {
         lat: 47.090,
         lng: -95.712
-    },
-}
+    }
+};
 var map;
 
-
 //*** FUNCTIONS
+
+// ------- validate text input on page 1 ------ //
+$("#submit-btn").on("click", function() {
+
+    event.preventDefault();
+
+    var userName = $('#textfield-name').val();
+
+    var regionSelect = $('#sel1').val();
+
+    if (userName === '') {
+
+        $('#warningDiv1').html('<div class="alert alert-warning"> Please enter your name.</div>')
+    }
+
+    if (regionSelect == 'select') {
+        $('#warningDiv2').html('<div class="alert alert-warning"> Please select a region.</div>')
+    } else {
+        localStorage.setItem("name", userName);
+        localStorage.setItem("region", regionSelect);
+        // $('#letsGo').show($('#letsGo'));
+
+        if ((localStorage.getItem("name") != '') && (localStorage.getItem("region") != '')) {
+            $("#letsGo").css({ "display": "inline" });
+
+            $("#submit-btn").css({ "display": "none" });
+
+            $('#name').html(localStorage.getItem("name"));
+        }
+
+    }
+
+    // $('#name-here').html(localStorage.getItem("usernameVar")); 
+});
+
+// ------- end validating input ------ //
+
+
+// ------- start building map for page 2 ----- //
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -528,9 +523,9 @@ function getRandomInt(min, max) {
 
 // Object.keys() - takes an object and returns an array of all the keys in the object
 
-$("#sel1").change(function(event) {
+$("#sel2").change(function(event) {
     var key = event.target.value;
-    console.log(regionmap[key])
+    console.log(regionmap[key]);
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: {
@@ -539,7 +534,8 @@ $("#sel1").change(function(event) {
         },
         mapTypeId: 'terrain'
     });
-
+    regionInput = event.target.value;
+    fillSidebar();
 });
 // var str = "";
 //   $( "select option:selected" ).each(function() {
@@ -584,9 +580,6 @@ function initMap() {
                 trendingMap[cityName] = {};
 
                 trendingMap[cityName].trend = trendName; //assigning the property "trend"
-
-                // console.log(trendName);
-
                 if (tweetVol === null) {
                     var randomTweetVol = getRandomInt(1000, 30000);
                     trendingMap[cityName].volume = randomTweetVol;
@@ -609,10 +602,6 @@ function initMap() {
 
         if (trendingMap[cleanedCity] != undefined && trendingMap[cleanedCity].hasOwnProperty("volume")) {
 
-            // for (var city in trendingMap) {
-            //     console.log("hello")
-            //     console.log(trendingMap[city])
-            // }
             // LOOP THROUGH THE JSON AND SEARCH FOR WHERE city == key.
             // WHEN YOU FIND A MATCH set var tweetAmount = "that value"
 
@@ -626,62 +615,38 @@ function initMap() {
                 map: map,
                 center: citymap[city].center,
                 radius: Math.sqrt(trendingMap[cleanedCity].volume) * 100
-            })
-        }
-        // var mapOptions = {
-        //     zoom: 5,
-        //     center: new google.maps.LatLng(37.09024, -100.712891),
-        //     panControl: false,
-        //     panControlOptions: {
-        //         position: google.maps.ControlPosition.BottomLEFT
-        //     },
-        //     zoomControl: true,
-        //     zoomControlOptions: {
-        //         style: google.maps.ZoomControlStyle.LARGE
-        //         position: google.maps.ControlPosition.RIGHT_CENTER
-        //     },
-        //     scaleControl: false
-        // }
-        // function zoomNE() {
-        //     regions.northeast =  new google.maps.Map(document.getElementById('map'), {
-        //     zoom: 7,
-        //     center: {
-        //         lat: 37.090,
-        //         lng: -95.712
-        //     },
-        //     mapTypeId: 'terrain'
-        // })
-        // };
+            });
+        };
     };
-    var regionInput = localStorage.getItem("region");
-    var regionArr;
-    if (regionInput === "NE") {
-        regionArr = regionsForSidebar.northeast;
-    } else if (regionInput === "S") {
-        regionArr = regionsForSidebar.south;
-    } else if (regionInput === "W") {
-        regionArr = regionsForSidebar.west;
-    } else if (regionInput === "MW") {
-        regionArr = regionsForSidebar.midwest;
-    };
-    fillSidebar(regionArr);
 };
 
-// populates the map sidebar with five random cities from selected region 
 
-function fillSidebar(regionArr) {
+function fillSidebar() {
+    regionInput = localStorage.getItem("region");
+    var regionKey = "";
+    if (regionInput == "NE") {
+        regionKey = regionsForSidebar.northeast;
+    } else if (regionInput == "S") {
+        regionKey = regionsForSidebar.south;
+    } else if (regionInput == "W") {
+        regionKey = regionsForSidebar.west;
+    } else if (regionInput == "MW") {
+        regionKey = regionsForSidebar.midwest;
+    };
+
+
     $("#topic").empty();
     $("#city").empty();
     $("#pop").empty();
     var regionTemp = [];
     randomCities = [];
-    for (var i = 0; i < regionArr.length; i++) {
-        var city = regionArr[i];
+    for (var i = 0; i < regionKey.length; i++) {
+        var city = regionKey[i];
         regionTemp.push(city);
 
     };
     for (var i = 0; i < 5; i++) {
-        var cityTemp = regionArr.shift();
+        var cityTemp = regionKey.shift();
         randomCities.push(cityTemp);
         randomCities.reverse();
     };
@@ -695,6 +660,7 @@ function fillSidebar(regionArr) {
             }
             return str.join(' ');
         };
+
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
@@ -702,36 +668,24 @@ function fillSidebar(regionArr) {
         var trendTopic = trendingMap[cityName].trend;
         var topicVolume = trendingMap[cityName].volume;
         var volumePretty = numberWithCommas(topicVolume);
-        
+
         if (cityName == "dallas-ft. worth") {
             var printName = "Dallas-Ft. Worth";
         } else {
             var printName = titleCase(cityName);
         };
-        
+
         $("#topic" + (i + 1)).html(trendTopic);
         $("#city" + (i + 1)).html(printName);
         $("#pop" + (i + 1)).html(volumePretty);
     };
 };
 
-$("#sel1").change(function(event) {
-    var key = event.target.value;
-    var regionArr;
-    if (key === "NE") {
-        regionArr = regionsForSidebar.northeast;
-    } else if (key === "S") {
-        regionArr = regionsForSidebar.south;
-    } else if (key === "W") {
-        regionArr = regionsForSidebar.west;
-    } else if (key === "MW") {
-        regionArr = regionsForSidebar.midwest;
-    };
-    fillSidebar();
-});
-
 //*** MAIN PROCESS
 
 $("#letsGo").on("click", function() {
     initMap();
+    $(document).ready(function() {
+        fillSidebar();
+    });
 });
