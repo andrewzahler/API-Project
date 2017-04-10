@@ -1,47 +1,6 @@
-// ------- validate text input on page 1 ------ //
-$("#submit-btn").on("click", function() {
-
-    event.preventDefault();
-
-    var userName = $('#textfield-name').val();
-
-    var regionSelect = $('#sel1').val();
-
-    if (userName === '') {
-
-        $('#warningDiv1').html('<div class="alert alert-warning"> Please enter your name.</div>')
-    }
-
-    if (regionSelect == 'select'){
-        $('#warningDiv2').html('<div class="alert alert-warning"> Please select a region.</div>')
-    }
-
-    else {
-        localStorage.setItem("name", userName);
-        localStorage.setItem("region", regionSelect)
-        // $('#letsGo').show($('#letsGo'));
-
-        if ((localStorage.getItem("name")!='') && (localStorage.getItem("region") !='')) {
-            $("#letsGo").css({ "display": "inline" });
-
-            $("#submit-btn").css({ "display": "none" });
-
-            $('#name').html(localStorage.getItem("name"));
-        }
-        
-    }
-});
-
-
-// ------- end validating input (page1)------ //
-
-
-// ------- start building map for page 2 ----- //
-
 //*** VARIABLES
 
 var trendingMap = {};
-var randomCities = [];
 var regions = {
     northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
     west: ["seattle", "portland", "lasvegas", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
@@ -508,50 +467,58 @@ var regionmap = {
     MW: {
         lat: 47.090,
         lng: -95.712
-    },
-}
+    }
+};
 var map;
 
-
 //*** FUNCTIONS
+
+// ------- validate text input on page 1 ------ //
+$("#submit-btn").on("click", function() {
+
+    event.preventDefault();
+
+    var userName = $('#textfield-name').val();
+
+    var regionSelect = $('#sel1').val();
+
+    if (userName === '') {
+
+        $('#warningDiv1').html('<div class="alert alert-warning"> Please enter your name.</div>')
+    }
+
+    if (regionSelect == 'select') {
+        $('#warningDiv2').html('<div class="alert alert-warning"> Please select a region.</div>')
+    } else {
+        localStorage.setItem("name", userName);
+        localStorage.setItem("region", regionSelect);
+        // $('#letsGo').show($('#letsGo'));
+
+        if ((localStorage.getItem("name") != '') && (localStorage.getItem("region") != '')) {
+            $("#letsGo").css({ "display": "inline" });
+
+            $("#submit-btn").css({ "display": "none" });
+
+            $('#name').html(localStorage.getItem("name"));
+        }
+
+    }
+
+    // $('#name-here').html(localStorage.getItem("usernameVar")); 
+});
+
+// ------- end validating input ------ //
+
+
+// ------- start building map for page 2 ----- //
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
 };
 
-
-// Object.keys() - takes an object and returns an array of all the keys in the object
-
-$("#sel1").change(function(event) {
-    var key = event.target.value;
-    console.log(regionmap[key])
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: {
-            lat: regionmap[key].lat,
-            lng: regionmap[key].lng
-        },
-        mapTypeId: 'terrain'
-        // draggable: false,
-    });
-
-});
-// var str = "";
-//   $( "select option:selected" ).each(function() {
-//     str += $( this ).text() + " ";
-//   });
-//   $( "div" ).text( str );
-// })
-// .change();
-
-
-
 function initMap() {
-
-// Global variable for accessing json
-
-
     // Create the map.
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
@@ -560,13 +527,14 @@ function initMap() {
             lng: -95.712
         },
         mapTypeId: 'terrain'
-
     });
     // Construct the circle for each value in citymap.
     // Note: We scale the area of the circle based on the population.
     // Extract out the city for each JSON, loop through JSON object. For each key, get the tweet volume and replace population 
 
     // init AJAX call to JSON file
+
+
     $.ajax({
             url: "https://api.myjson.com/bins/1c3nzr",
             method: "GET",
@@ -580,9 +548,6 @@ function initMap() {
                 trendingMap[cityName] = {};
 
                 trendingMap[cityName].trend = trendName; //assigning the property "trend"
-
-                // console.log(trendName);
-
                 if (tweetVol === null) {
                     var randomTweetVol = getRandomInt(1000, 30000);
                     trendingMap[cityName].volume = randomTweetVol;
@@ -599,16 +564,12 @@ function initMap() {
         var cleanedCity = city.toLowerCase();
         cleanedCity = cleanedCity.split(" ").join("");
 
-        console.log(city);
-        console.log(cleanedCity);
-        console.log(trendingMap[cleanedCity]);
+        // console.log(city);
+        // console.log(cleanedCity);
+        // console.log(trendingMap[cleanedCity]);
 
         if (trendingMap[cleanedCity] != undefined && trendingMap[cleanedCity].hasOwnProperty("volume")) {
 
-            // for (var city in trendingMap) {
-            //     console.log("hello")
-            //     console.log(trendingMap[city])
-            // }
             // LOOP THROUGH THE JSON AND SEARCH FOR WHERE city == key.
             // WHEN YOU FIND A MATCH set var tweetAmount = "that value"
 
@@ -622,65 +583,47 @@ function initMap() {
                 map: map,
                 center: citymap[city].center,
                 radius: Math.sqrt(trendingMap[cleanedCity].volume) * 100
-            })
-        }
-        // var mapOptions = {
-        //     zoom: 5,
-        //     center: new google.maps.LatLng(37.09024, -100.712891),
-        //     panControl: false,
-        //     panControlOptions: {
-        //         position: google.maps.ControlPosition.BottomLEFT
-        //     },
-        //     zoomControl: true,
-        //     zoomControlOptions: {
-        //         style: google.maps.ZoomControlStyle.LARGE
-        //         position: google.maps.ControlPosition.RIGHT_CENTER
-        //     },
-        //     scaleControl: false
-        // }
-        // function zoomNE() {
-        //     regions.northeast =  new google.maps.Map(document.getElementById('map'), {
-        //     zoom: 7,
-        //     center: {
-        //         lat: 37.090,
-        //         lng: -95.712
-        //     },
-        //     mapTypeId: 'terrain'
-        // })
-        // };
-    }
+            });
+        };
+    };
+    var key = (localStorage.getItem("region"));
+    fillSidebar(key);
+};
 
 
-}
-// populates the map sidebar with five random cities from selected region 
-
-$("#sel1").change(function(event) {
+function fillSidebar(key) { // function for populating the left-hand sidebar with five trends from the user-selected region
+    // clear the divs in the sidebar
     $("#topic").empty();
     $("#city").empty();
     $("#pop").empty();
-    var key = event.target.value;
-    var regionArr;
-    if (key === "NE") {
+    var regionArr; // shortcut for accessing the array holding cities for selected region
+    if (key == "NE") {
         regionArr = regionsForSidebar.northeast;
-    } else if (key === "S") {
+        document.getElementById("selectNE").selected = true;
+    } else if (key == "S") {
         regionArr = regionsForSidebar.south;
-    } else if (key === "W") {
+        document.getElementById("selectS").selected = true;
+    } else if (key == "W") {
         regionArr = regionsForSidebar.west;
-    } else if (key === "MW") {
+        document.getElementById("selectW").selected = true;
+    } else if (key == "MW") {
         regionArr = regionsForSidebar.midwest;
-    };
-    var regionTemp = [];
-    randomCities = [];
+        document.getElementById("selectMW").selected = true;        
+    }; 
+    var regionTemp = []; // holds 
+    var randomCities = [];
+    
     for (var i = 0; i < regionArr.length; i++) {
         var city = regionArr[i];
         regionTemp.push(city);
-
     };
     for (var i = 0; i < 5; i++) {
-        var cityTemp = regionArr.shift();
-        randomCities.push(cityTemp);
-        randomCities.reverse();
+        var cityTemp = regionArr.shift(); // removes first item in the array
+        randomCities.push(cityTemp); // adds that item to end of randomCities 
+        randomCities.reverse(); // reverses order of randomCities
+        regionArr.push(cityTemp); // adds item back into original array, but at the end
     };
+    console.log(randomCities);
     for (var i = 0; i < randomCities.length; i++) {
         function titleCase(str) {
             str = str.toLowerCase().split(' ');
@@ -691,28 +634,45 @@ $("#sel1").change(function(event) {
             }
             return str.join(' ');
         };
+
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
         var cityName = randomCities[i];
-        var trendTopic = trendingMap[cityName].trend;
+        // console.log(cityName);
+        var trendTopic = trendingMap[cityName].trend; 
         var topicVolume = trendingMap[cityName].volume;
         var volumePretty = numberWithCommas(topicVolume);
-        
+
         if (cityName == "dallas-ft. worth") {
             var printName = "Dallas-Ft. Worth";
         } else {
             var printName = titleCase(cityName);
         };
-        
+
         $("#topic" + (i + 1)).html(trendTopic);
         $("#city" + (i + 1)).html(printName);
         $("#pop" + (i + 1)).html(volumePretty);
     };
+};
+
+$("#sel2").change(function(event) {
+    var key = event.target.value;
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: {
+            lat: regionmap[key].lat,
+            lng: regionmap[key].lng
+        },
+        mapTypeId: 'terrain'
+    });
+    // call function to populate sidebar with trending topics
+    fillSidebar(key);
 });
 
 //*** MAIN PROCESS
-
+// Runs after user clicks "Let's Go" button on first page
 $("#letsGo").on("click", function() {
+    // initializes Google map
     initMap();
 });
