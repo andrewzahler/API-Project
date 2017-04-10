@@ -671,6 +671,7 @@ $("#sel2").change(function(event) {
     });
     // call function to populate sidebar with trending topics
     fillSidebar(key);
+    initMap();
 });
 
 //*** MAIN PROCESS
