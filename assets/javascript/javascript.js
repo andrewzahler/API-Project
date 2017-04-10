@@ -586,17 +586,20 @@ function initMap() {
             });
         };
     };
-    fillSidebar();
+    var key = (localStorage.getItem("region"));
+    fillSidebar(key);
 };
 
 
-function fillSidebar() { // function for populating the left-hand sidebar with five trends from the user-selected region
+function fillSidebar(key) { // function for populating the left-hand sidebar with five trends from the user-selected region
     // clear the divs in the sidebar
     $("#topic").empty();
     $("#city").empty();
     $("#pop").empty();
-    //pick out the user-selected region from page 1, in local storag 
-    var key = (localStorage.getItem("region"));
+    //pick out the user-selected region from page 1, in local storage 
+    // if (key.length == 0) {
+    //     key = "NE";
+    // };
     var regionArr; // shortcut for accessing the array holding cities for selected region
     if (key == "NE") {
         regionArr = regionsForSidebar.northeast;
@@ -606,11 +609,11 @@ function fillSidebar() { // function for populating the left-hand sidebar with f
         regionArr = regionsForSidebar.west;
     } else if (key == "MW") {
         regionArr = regionsForSidebar.midwest;
-    };
+    }; 
 
     var regionTemp = []; // holds 
     var randomCities = [];
-
+    
     for (var i = 0; i < regionArr.length; i++) {
         var city = regionArr[i];
         regionTemp.push(city);
@@ -635,7 +638,7 @@ function fillSidebar() { // function for populating the left-hand sidebar with f
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
         var cityName = randomCities[i];
-        var trendTopic = trendingMap[cityName].trend;
+        var trendTopic = trendingMap[cityName].trend; //!!! Throws an error here when Northeast is selected for a second time; I have no idea why
         var topicVolume = trendingMap[cityName].volume;
         var volumePretty = numberWithCommas(topicVolume);
 
@@ -653,7 +656,6 @@ function fillSidebar() { // function for populating the left-hand sidebar with f
 
 $("#sel2").change(function(event) {
     var key = event.target.value;
-    console.log(regionmap[key]);
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: {
@@ -662,9 +664,8 @@ $("#sel2").change(function(event) {
         },
         mapTypeId: 'terrain'
     });
-    regionInput = event.target.value;
     // call function to populate sidebar with trending topics
-    fillSidebar();
+    fillSidebar(key);
 });
 
 //*** MAIN PROCESS
