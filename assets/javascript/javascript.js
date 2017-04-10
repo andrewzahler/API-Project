@@ -526,6 +526,7 @@ function initMap() {
             lat: 37.090,
             lng: -95.712
         },
+       
         mapTypeId: 'terrain'
     });
     // Construct the circle for each value in citymap.
@@ -557,7 +558,7 @@ function initMap() {
             }
         })
 
-    console.log(trendingMap);
+    // console.log(trendingMap);
 
     for (var city in citymap) {
 
@@ -588,6 +589,8 @@ function initMap() {
     };
     var key = (localStorage.getItem("region"));
     fillSidebar(key);
+
+    console.log(key)
 };
 
 
