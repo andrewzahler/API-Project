@@ -533,6 +533,7 @@ $("#sel1").change(function(event) {
             lng: regionmap[key].lng
         },
         mapTypeId: 'terrain'
+        // draggable: false,
     });
 
 });
@@ -547,7 +548,8 @@ $("#sel1").change(function(event) {
 
 
 function initMap() {
-    // Global variable for accessing json
+
+// Global variable for accessing json
 
 
     // Create the map.
@@ -558,14 +560,13 @@ function initMap() {
             lng: -95.712
         },
         mapTypeId: 'terrain'
+
     });
     // Construct the circle for each value in citymap.
     // Note: We scale the area of the circle based on the population.
     // Extract out the city for each JSON, loop through JSON object. For each key, get the tweet volume and replace population 
 
     // init AJAX call to JSON file
-
-
     $.ajax({
             url: "https://api.myjson.com/bins/1c3nzr",
             method: "GET",
