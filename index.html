@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body id="page1">
  <!--header-->
     <div class="container" id="header">
         <h3 class="panel-title"> Wildfire</h3>
@@ -44,8 +44,8 @@
     <div class="panel-body" id="appDescription-div">
         <div class="panel-body">
             <div class="appdescription">
-                Follow your interests in real time.<br> 
-                Watch ideas light up across the country.
+                <h1>Follow your interests in real time.<br> 
+                Watch ideas light up across the country.</h1>
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
             <h4> Name </h4>
             <div class="form-group">
                 <input type="text" class="form-control" id="textfield-name" >
-                <div id="warningDiv"></div>
+                <div class="warning" id="warningDiv1"></div>
             </div>
         </div>
 
@@ -68,12 +68,13 @@
         <div class="form-group" id="region-select">
             <label for="sel1"><h4>Select Your Region</h4></label>
             <select class="form-control" id="sel1">
+                <option value="select">Select</option>
                 <option value="NE">Northeast</option>
-                <option value="SE">South</option>
+                <option value="S">South</option>
                 <option value="MW">Midwest</option>
-                <option value="NW">West</option>
+                <option value="W">West</option>
             </select>
-
+            <div class="warning" id="warningDiv2"></div>
 
         </div>
 
@@ -115,8 +116,8 @@
 <!--footer-->
   <footer class="footer">
     <div class="container" id="footer-text">
-        <p class="text-muted">
-            Andrew Zahler / Ricardo Percy / Caitlin Reid &copy; 2017
+        <p class="text-muted" id="footer-page1">
+            Zahler / Percy / Reid &copy; 2017
         </p>
     </div>
   </footer>
