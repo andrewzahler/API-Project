@@ -543,6 +543,7 @@ function initMap() {
         .done(function(response) {
             for (i in response) {
                 var cityName = response[i].locations[0].name.toLowerCase();
+                cityName = cityName.split(" ").join("");
                 var trendName = response[i].trends[0].name;
                 var tweetVol = response[i].trends[0].tweet_volume;
                 trendingMap[cityName] = {};
@@ -563,10 +564,6 @@ function initMap() {
 
         var cleanedCity = city.toLowerCase();
         cleanedCity = cleanedCity.split(" ").join("");
-
-        // console.log(city);
-        // console.log(cleanedCity);
-        // console.log(trendingMap[cleanedCity]);
 
         if (trendingMap[cleanedCity] != undefined && trendingMap[cleanedCity].hasOwnProperty("volume")) {
 
@@ -639,9 +636,11 @@ function fillSidebar(key) { // function for populating the left-hand sidebar wit
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
         var cityName = randomCities[i];
-        // console.log(cityName);
-        var trendTopic = trendingMap[cityName].trend; 
-        var topicVolume = trendingMap[cityName].volume;
+        var cityNameConverted = cityName.split(" ").join("");
+        console.log(cityName);
+        console.log(trendingMap);
+        var trendTopic = trendingMap[cityNameConverted].trend; 
+        var topicVolume = trendingMap[cityNameConverted].volume;
         var volumePretty = numberWithCommas(topicVolume);
 
         if (cityName == "dallas-ft. worth") {
