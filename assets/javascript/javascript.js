@@ -467,6 +467,10 @@ var regionmap = {
     MW: {
         lat: 47.090,
         lng: -95.712
+    },
+    selectone: {
+        lat: 37.090,
+        lng: -95.712
     }
 };
 var map;
