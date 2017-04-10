@@ -2,7 +2,7 @@
 
 var trendingMap = {};
 var randomCities = [];
-var regionInput;
+var regionInput = localStorage.getItem("region");
 var regions = {
     northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
     west: ["seattle", "portland", "lasvegas", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
@@ -622,7 +622,6 @@ function initMap() {
 
 
 function fillSidebar() {
-    regionInput = localStorage.getItem("region");
     var regionKey = "";
     if (regionInput == "NE") {
         regionKey = regionsForSidebar.northeast;
