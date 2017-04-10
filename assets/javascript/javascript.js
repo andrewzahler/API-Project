@@ -453,8 +453,8 @@ var citymap = {
 
 var regionmap = {
     NE: {
-        lat: 37.090,
-        lng: -95.712
+        lat: 42.090,
+        lng: -73.712
     },
     S: {
         lat: 32.7767,
@@ -466,6 +466,10 @@ var regionmap = {
     },
     MW: {
         lat: 47.090,
+        lng: -95.712
+    },
+    selectone: {
+        lat: 37.090,
         lng: -95.712
     }
 };
@@ -526,7 +530,6 @@ function initMap() {
             lat: 37.090,
             lng: -95.712
         },
-       
         mapTypeId: 'terrain'
     });
     // Construct the circle for each value in citymap.
@@ -544,6 +547,7 @@ function initMap() {
         .done(function(response) {
             for (i in response) {
                 var cityName = response[i].locations[0].name.toLowerCase();
+                cityName = cityName.split(" ").join("");
                 var trendName = response[i].trends[0].name;
                 var tweetVol = response[i].trends[0].tweet_volume;
                 trendingMap[cityName] = {};
@@ -558,16 +562,12 @@ function initMap() {
             }
         })
 
-    // console.log(trendingMap);
+    console.log(trendingMap);
 
     for (var city in citymap) {
 
         var cleanedCity = city.toLowerCase();
         cleanedCity = cleanedCity.split(" ").join("");
-
-        // console.log(city);
-        // console.log(cleanedCity);
-        // console.log(trendingMap[cleanedCity]);
 
         if (trendingMap[cleanedCity] != undefined && trendingMap[cleanedCity].hasOwnProperty("volume")) {
 
@@ -589,8 +589,6 @@ function initMap() {
     };
     var key = (localStorage.getItem("region"));
     fillSidebar(key);
-
-    console.log(key)
 };
 
 
@@ -642,9 +640,11 @@ function fillSidebar(key) { // function for populating the left-hand sidebar wit
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
         var cityName = randomCities[i];
-        // console.log(cityName);
-        var trendTopic = trendingMap[cityName].trend; 
-        var topicVolume = trendingMap[cityName].volume;
+        var cityNameConverted = cityName.split(" ").join("");
+        console.log(cityName);
+        console.log(trendingMap);
+        var trendTopic = trendingMap[cityNameConverted].trend; 
+        var topicVolume = trendingMap[cityNameConverted].volume;
         var volumePretty = numberWithCommas(topicVolume);
 
         if (cityName == "dallas-ft. worth") {
