@@ -1,8 +1,6 @@
 //*** VARIABLES
 
 var trendingMap = {};
-var randomCities = [];
-var regionInput = localStorage.getItem("region");
 var regions = {
     northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
     west: ["seattle", "portland", "lasvegas", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
@@ -520,37 +518,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 };
 
-
-// Object.keys() - takes an object and returns an array of all the keys in the object
-
-$("#sel2").change(function(event) {
-    var key = event.target.value;
-    console.log(regionmap[key]);
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: {
-            lat: regionmap[key].lat,
-            lng: regionmap[key].lng
-        },
-        mapTypeId: 'terrain'
-    });
-    regionInput = event.target.value;
-    fillSidebar();
-});
-// var str = "";
-//   $( "select option:selected" ).each(function() {
-//     str += $( this ).text() + " ";
-//   });
-//   $( "div" ).text( str );
-// })
-// .change();
-
-
-
 function initMap() {
-    // Global variable for accessing json
-
-
     // Create the map.
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
@@ -596,9 +564,9 @@ function initMap() {
         var cleanedCity = city.toLowerCase();
         cleanedCity = cleanedCity.split(" ").join("");
 
-        console.log(city);
-        console.log(cleanedCity);
-        console.log(trendingMap[cleanedCity]);
+        // console.log(city);
+        // console.log(cleanedCity);
+        // console.log(trendingMap[cleanedCity]);
 
         if (trendingMap[cleanedCity] != undefined && trendingMap[cleanedCity].hasOwnProperty("volume")) {
 
@@ -618,34 +586,37 @@ function initMap() {
             });
         };
     };
+    fillSidebar();
 };
 
 
-function fillSidebar() {
-    var regionKey = "";
-    if (regionInput == "NE") {
-        regionKey = regionsForSidebar.northeast;
-    } else if (regionInput == "S") {
-        regionKey = regionsForSidebar.south;
-    } else if (regionInput == "W") {
-        regionKey = regionsForSidebar.west;
-    } else if (regionInput == "MW") {
-        regionKey = regionsForSidebar.midwest;
-    };
-
-
+function fillSidebar() { // function for populating the left-hand sidebar with five trends from the user-selected region
+    // clear the divs in the sidebar
     $("#topic").empty();
     $("#city").empty();
     $("#pop").empty();
-    var regionTemp = [];
-    randomCities = [];
-    for (var i = 0; i < regionKey.length; i++) {
-        var city = regionKey[i];
-        regionTemp.push(city);
+    //pick out the user-selected region from page 1, in local storag 
+    var key = (localStorage.getItem("region"));
+    var regionArr; // shortcut for accessing the array holding cities for selected region
+    if (key == "NE") {
+        regionArr = regionsForSidebar.northeast;
+    } else if (key == "S") {
+        regionArr = regionsForSidebar.south;
+    } else if (key == "W") {
+        regionArr = regionsForSidebar.west;
+    } else if (key == "MW") {
+        regionArr = regionsForSidebar.midwest;
+    };
 
+    var regionTemp = []; // holds 
+    var randomCities = [];
+
+    for (var i = 0; i < regionArr.length; i++) {
+        var city = regionArr[i];
+        regionTemp.push(city);
     };
     for (var i = 0; i < 5; i++) {
-        var cityTemp = regionKey.shift();
+        var cityTemp = regionArr.shift();
         randomCities.push(cityTemp);
         randomCities.reverse();
     };
@@ -680,11 +651,25 @@ function fillSidebar() {
     };
 };
 
-//*** MAIN PROCESS
-
-$("#letsGo").on("click", function() {
-    initMap();
-    $(document).ready(function() {
-        fillSidebar();
+$("#sel2").change(function(event) {
+    var key = event.target.value;
+    console.log(regionmap[key]);
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: {
+            lat: regionmap[key].lat,
+            lng: regionmap[key].lng
+        },
+        mapTypeId: 'terrain'
     });
+    regionInput = event.target.value;
+    // call function to populate sidebar with trending topics
+    fillSidebar();
+});
+
+//*** MAIN PROCESS
+// Runs after user clicks "Let's Go" button on first page
+$("#letsGo").on("click", function() {
+    // initializes Google map
+    initMap();
 });
