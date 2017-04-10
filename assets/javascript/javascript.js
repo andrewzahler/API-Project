@@ -453,8 +453,8 @@ var citymap = {
 
 var regionmap = {
     NE: {
-        lat: 37.090,
-        lng: -95.712
+        lat: 42.090,
+        lng: -73.712
     },
     S: {
         lat: 32.7767,
