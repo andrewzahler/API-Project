@@ -596,21 +596,20 @@ function fillSidebar(key) { // function for populating the left-hand sidebar wit
     $("#topic").empty();
     $("#city").empty();
     $("#pop").empty();
-    //pick out the user-selected region from page 1, in local storage 
-    // if (key.length == 0) {
-    //     key = "NE";
-    // };
     var regionArr; // shortcut for accessing the array holding cities for selected region
     if (key == "NE") {
         regionArr = regionsForSidebar.northeast;
+        document.getElementById("selectNE").selected = true;
     } else if (key == "S") {
         regionArr = regionsForSidebar.south;
+        document.getElementById("selectS").selected = true;
     } else if (key == "W") {
         regionArr = regionsForSidebar.west;
+        document.getElementById("selectW").selected = true;
     } else if (key == "MW") {
         regionArr = regionsForSidebar.midwest;
+        document.getElementById("selectMW").selected = true;        
     }; 
-
     var regionTemp = []; // holds 
     var randomCities = [];
     
@@ -619,10 +618,12 @@ function fillSidebar(key) { // function for populating the left-hand sidebar wit
         regionTemp.push(city);
     };
     for (var i = 0; i < 5; i++) {
-        var cityTemp = regionArr.shift();
-        randomCities.push(cityTemp);
-        randomCities.reverse();
+        var cityTemp = regionArr.shift(); // removes first item in the array
+        randomCities.push(cityTemp); // adds that item to end of randomCities 
+        randomCities.reverse(); // reverses order of randomCities
+        regionArr.push(cityTemp); // adds item back into original array, but at the end
     };
+    console.log(randomCities);
     for (var i = 0; i < randomCities.length; i++) {
         function titleCase(str) {
             str = str.toLowerCase().split(' ');
@@ -638,7 +639,8 @@ function fillSidebar(key) { // function for populating the left-hand sidebar wit
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
         var cityName = randomCities[i];
-        var trendTopic = trendingMap[cityName].trend; //!!! Throws an error here when Northeast is selected for a second time; I have no idea why
+        // console.log(cityName);
+        var trendTopic = trendingMap[cityName].trend; 
         var topicVolume = trendingMap[cityName].volume;
         var volumePretty = numberWithCommas(topicVolume);
 
