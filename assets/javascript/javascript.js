@@ -448,28 +448,20 @@ var citymap = {
 
 var regionmap = {
     NE: {
-        // lat: 42.090,
-        // lng: -73.712
-        lat:41.1017621,
-        lng:-78.895462
+        lat: 42.090,
+        lng: -73.712
     },
     S: {
-        // lat: 32.7767,
-        // lng: -96.7970
-        lat:33.2812095,
-        lng:-91.2229836
+        lat: 32.7767,
+        lng: -96.7970
     },
     W: {
-        // lat: 33.7701,
-        // lng: -118.1937
-        lat:40.4330275,
-        lng:-110.0343133
+        lat: 33.7701,
+        lng: -118.1937
     },
     MW: {
-        // lat: 47.090,
-        // lng: -95.712
-        lat:42.0919883,
-        lng:-94.8561886
+        lat: 47.090,
+        lng: -95.712
     },
     selectone: {
         lat: 37.090,
@@ -492,17 +484,14 @@ $("#submit-btn").on("click", function() {
 
     if (userName === '') {
 
-        $('#warningDiv1').html('<div class="alert alert-warning fade in"> Please enter your name.</div>')
-
+        $('#warningDiv1').html('<div class="alert alert-warning"> Please enter your name.</div>')
     }
 
     if (regionSelect == 'select') {
-        $('#warningDiv2').html('<div class="alert alert-warning fade in"> Please select a region.</div>')
+        $('#warningDiv2').html('<div class="alert alert-warning"> Please select a region.</div>')
     } else {
         localStorage.setItem("name", userName);
         localStorage.setItem("region", regionSelect);
-        $('#warningDiv1').html('');
-        $('#warningDiv2').html('');
         // $('#letsGo').show($('#letsGo'));
 
         if ((localStorage.getItem("name") != '') && (localStorage.getItem("region") != '')) {
@@ -627,7 +616,6 @@ function fillSidebar(key) { // populates left sidebar with trending topics
             }
             return str.join(' ');
         };
-
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
@@ -655,6 +643,7 @@ $("#sel2").change(function(event) {
     var key = event.target.value;
     fillSidebar(key);
     initMap(map, key);
+
 });
 
 //*** MAIN PROCESS
