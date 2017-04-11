@@ -616,7 +616,6 @@ function fillSidebar(key) { // populates left sidebar with trending topics
             }
             return str.join(' ');
         };
-
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
