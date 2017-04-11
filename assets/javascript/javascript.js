@@ -519,7 +519,7 @@ function initMap(map, key) {
         key = (localStorage.getItem("region"));
     };
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
+        zoom: 5,
         center: {
             lat: regionmap[key].lat,
             lng: regionmap[key].lng
