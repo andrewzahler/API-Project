@@ -1,12 +1,12 @@
 //*** VARIABLES
 
 var trendingMap = {};
-var regions = {
-    northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
-    west: ["seattle", "portland", "lasvegas", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
-    south: ["sanjose", "dallas", "sanantonio", "oklahomacity", "houston", "elpaso", "birmingham", "neworleans", "louisville", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginiabeach", "washingtondc", "tampa"],
-    midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
-};
+// var regions = {
+//     northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
+//     west: ["seattle", "portland", "lasvegas", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
+//     south: ["sanjose", "dallas", "sanantonio", "oklahomacity", "houston", "elpaso", "birmingham", "neworleans", "louisville", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginiabeach", "washingtondc", "tampa"],
+//     midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
+// };
 var regionsForSidebar = {
     northeast: ["new york", "philadelphia", "baltimore", "pittsburgh", "providence", "new haven", "harrisburg", "boston"],
     west: ["portland", "las vegas", "seattle", "portland", "los angeles", "sacramento", "albuquerque", "colorado springs", "denver", "fresno", "honolulu", "long beach", "phoenix", "salt lake city", "tucson", "san diego"],
@@ -473,6 +473,7 @@ var regionmap = {
         lng: -95.712
     }
 };
+
 var map;
 
 //*** FUNCTIONS
@@ -562,8 +563,6 @@ function initMap() {
             }
         })
 
-    console.log(trendingMap);
-
     for (var city in citymap) {
 
         var cleanedCity = city.toLowerCase();
@@ -588,6 +587,7 @@ function initMap() {
         };
     };
     var key = (localStorage.getItem("region"));
+
     fillSidebar(key);
 };
 
@@ -611,6 +611,7 @@ function fillSidebar(key) { // function for populating the left-hand sidebar wit
         regionArr = regionsForSidebar.midwest;
         document.getElementById("selectMW").selected = true;        
     }; 
+
     var regionTemp = []; // holds 
     var randomCities = [];
     
@@ -624,7 +625,7 @@ function fillSidebar(key) { // function for populating the left-hand sidebar wit
         randomCities.reverse(); // reverses order of randomCities
         regionArr.push(cityTemp); // adds item back into original array, but at the end
     };
-    console.log(randomCities);
+    // console.log(randomCities);
     for (var i = 0; i < randomCities.length; i++) {
         function titleCase(str) {
             str = str.toLowerCase().split(' ');
@@ -641,8 +642,8 @@ function fillSidebar(key) { // function for populating the left-hand sidebar wit
         };
         var cityName = randomCities[i];
         var cityNameConverted = cityName.split(" ").join("");
-        console.log(cityName);
-        console.log(trendingMap);
+        // console.log(cityName);
+        // console.log(trendingMap);
         var trendTopic = trendingMap[cityNameConverted].trend; 
         var topicVolume = trendingMap[cityNameConverted].volume;
         var volumePretty = numberWithCommas(topicVolume);
@@ -662,7 +663,7 @@ function fillSidebar(key) { // function for populating the left-hand sidebar wit
 $("#sel2").change(function(event) {
     var key = event.target.value;
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
+        zoom: 8,
         center: {
             lat: regionmap[key].lat,
             lng: regionmap[key].lng
