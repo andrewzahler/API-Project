@@ -644,6 +644,7 @@ $("#sel2").change(function(event) {
     var key = event.target.value;
     fillSidebar(key);
     initMap(map, key);
+
 });
 
 //*** MAIN PROCESS
