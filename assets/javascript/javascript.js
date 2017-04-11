@@ -468,6 +468,7 @@ var regionmap = {
         lng: -95.712
     }
 };
+
 var map;
 
 //*** FUNCTIONS
@@ -499,17 +500,13 @@ $("#submit-btn").on("click", function() {
             $("#submit-btn").css({ "display": "none" });
 
             $('#name').html(localStorage.getItem("name"));
-        }
-
-    }
-
-    // $('#name-here').html(localStorage.getItem("usernameVar")); 
+        };
+    };
 });
 
 // ------- end validating input ------ //
 
-
-// ------- start building map for page 2 ----- //
+// ------- functions for page 2 ----- //
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -518,9 +515,8 @@ function getRandomInt(min, max) {
 };
 
 function initMap(map, key) {
-    // Create the map.
     if (key == null) {
-    key = (localStorage.getItem("region"));
+        key = (localStorage.getItem("region"));
     };
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
@@ -530,24 +526,6 @@ function initMap(map, key) {
         },
         mapTypeId: 'terrain'
     });
-
-    // if (map == null) { // This is for cases when user selects region from p2 dropdown
-    //     map = new google.maps.Map(document.getElementById('map'), {
-    //         zoom: 4,
-    //         center: {
-    //             lat: 37.090,
-    //             lng: -95.712
-    //         },
-    //         mapTypeId: 'terrain'
-    //     });
-    // };
-
-    // Construct the circle for each value in citymap.
-    // Note: We scale the area of the circle based on the population.
-    // Extract out the city for each JSON, loop through JSON object. For each key, get the tweet volume and replace population 
-
-    // init AJAX call to JSON file
-
 
     $.ajax({
             url: "https://api.myjson.com/bins/1c3nzr",
@@ -569,19 +547,14 @@ function initMap(map, key) {
                 } else {
                     trendingMap[cityName].volume = tweetVol;
                 };
-            }
+            };
         })
-
-    console.log(trendingMap);
-
     for (var city in citymap) {
-
         var cleanedCity = city.toLowerCase();
         cleanedCity = cleanedCity.split(" ").join("");
         if (cleanedCity == "dallas") {
             cleanedCity = "dallas-ft.worth";
         };
-
         if (trendingMap[cleanedCity] != undefined && trendingMap[cleanedCity].hasOwnProperty("volume")) {
 
             // LOOP THROUGH THE JSON AND SEARCH FOR WHERE city == key.
@@ -600,17 +573,14 @@ function initMap(map, key) {
             });
         };
     };
-
-        fillSidebar(key);
+    fillSidebar(key);
 };
 
-
-function fillSidebar(key) { // function for populating the left sidebar with 5 trends from user-selected region
-    // clear the divs in the sidebar
+function fillSidebar(key) { // populates left sidebar with trending topics
     $("#topic").empty();
     $("#city").empty();
     $("#pop").empty();
-    var regionArr; // shortcut for accessing the array holding cities for selected region
+    var regionArr;
     if (key == "NE") {
         regionArr = regions.northeast;
         document.getElementById("selectNE").selected = true;
@@ -627,13 +597,6 @@ function fillSidebar(key) { // function for populating the left sidebar with 5 t
     var regionTemp = [];
     var randomCities = [];
 
-    // for (var i = 0; i < regionArr.length; i++) {
-    //     var city = regionArr[i];
-    //     if (regionArr[i] =="dallas") {
-    //         city = "dallas-ft.worth";
-    //     };
-    //     regionTemp.push(city);
-    // };
     for (var i = 0; i < 5; i++) {
         var cityTemp = regionArr.shift(); // removes first item in the array of regional cities
         if (cityTemp == "dallas") {
@@ -679,22 +642,11 @@ function fillSidebar(key) { // function for populating the left sidebar with 5 t
 
 $("#sel2").change(function(event) {
     var key = event.target.value;
-    // map = new google.maps.Map(document.getElementById('map'), {
-    //     zoom: 4,
-    //     center: {
-    //         lat: regionmap[key].lat,
-    //         lng: regionmap[key].lng
-    //     },
-    //     mapTypeId: 'terrain'
-    // });
-    // calls function to load map but centered on selected region
     fillSidebar(key);
     initMap(map, key);
 });
 
 //*** MAIN PROCESS
-// Runs after user clicks "Let's Go" button on first page
 $("#letsGo").on("click", function() {
-    
     initMap();
 });
