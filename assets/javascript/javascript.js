@@ -484,14 +484,17 @@ $("#submit-btn").on("click", function() {
 
     if (userName === '') {
 
-        $('#warningDiv1').html('<div class="alert alert-warning"> Please enter your name.</div>')
+        $('#warningDiv1').html('<div class="alert alert-warning fade in"> Please enter your name.</div>')
+
     }
 
     if (regionSelect == 'select') {
-        $('#warningDiv2').html('<div class="alert alert-warning"> Please select a region.</div>')
+        $('#warningDiv2').html('<div class="alert alert-warning fade in"> Please select a region.</div>')
     } else {
         localStorage.setItem("name", userName);
         localStorage.setItem("region", regionSelect);
+        $('#warningDiv1').html('');
+        $('#warningDiv2').html('');
         // $('#letsGo').show($('#letsGo'));
 
         if ((localStorage.getItem("name") != '') && (localStorage.getItem("region") != '')) {
