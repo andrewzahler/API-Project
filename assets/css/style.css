@@ -54,7 +54,9 @@ hr {
 	width:10%;
 }
 
-
+#sel2 {
+	background-color: #f5f5f5;
+}
 
 #form-panel {
 	font-family: 'Alegreya Sans', sans-serif;
@@ -68,8 +70,13 @@ hr {
 	background-color: rgba(237, 251, 10, 0.3);
 	border:none;
 	width:92%;
+	font-weight: 300;
 	font-family: 'Roboto', sans-serif;
 	color: #560000;
+}
+
+#textfield-name {
+	background-color: rgba(237, 251, 10, 0.3);
 }
 
 #page1 {
@@ -86,6 +93,7 @@ h4 {
 	color:#9a0404;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
+	/*font-size:20px;*/
 	/*font-size: 28px;*/
 }
 
@@ -137,6 +145,8 @@ h1 {
 	margin: 20px;
 	width: 45%;
 	border:none;
+	margin-left: 55px;
+
 }	
 
 #warningDiv {
@@ -148,6 +158,10 @@ h1 {
 	color:white;
 	float:right;
 	display:none;
+	margin-right: 32px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+
 }
 
 /* name from local storage */
@@ -179,9 +193,12 @@ h1 {
 }
 .panel-body {
 	height: 515px;
-	width:90%;
 	margin-left:;
 	/*padding-top: 40px;	*/
+}
+
+#main-co {
+	width: 90%;
 }
 
 #form-panel {
@@ -219,7 +236,7 @@ h1 {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 	font-style: italic;
-	font-size:20px;
+	font-size:18px;
 
 }
 
@@ -268,7 +285,16 @@ h1 {
 
 .alert-warning {
 	margin-top: 5px;
-	width:50%;
+	width:92%;
+	font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+        /* color: white; 
+    background-color: transparent; 
+    border-color: #faebcc;*/
+}
+
+.alert {
+	background-color: transparent;
 }
 
 #sign-in {
@@ -289,6 +315,7 @@ h1 {
 
 #footer-page1 {
 	color: brown;
+	/*margin-right: 70px;*/
 }
 
 #footer-page2 {
