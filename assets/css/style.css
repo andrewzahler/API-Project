@@ -313,6 +313,11 @@ h1 {
     
 }
 
+#container-footer {
+	/*width:100%;*/
+	/*padding-right:30px;*/
+}
+
 #footer-page1 {
 	color: brown;
 	/*margin-right: 70px;*/
@@ -320,6 +325,7 @@ h1 {
 
 #footer-page2 {
 	background-color: #f5f5f5;
+	/*width: 95%;*/
 }
 
 #footer-text {
@@ -357,6 +363,7 @@ h1 {
 	/*float: left;*/
 	background-color: #ffffff;
 	width: 100%;
+	font-family: 'Roboto', sans-serif;
 }
 
 /* trends */
