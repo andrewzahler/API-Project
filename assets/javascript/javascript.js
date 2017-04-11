@@ -1,16 +1,11 @@
 //*** VARIABLES
 
 var trendingMap = {};
+
 var regions = {
-    northeast: ["newyork", "philadelphia", "baltimore", "pittsburgh", "providence", "newhaven", "harrisburg", "boston"],
-    west: ["seattle", "portland", "lasvegas", "seattle", "portland", "losangeles", "lasvegas", "sacramento", "sanjose", "albuquerque", "coloradosprings", "denver", "fresno", "honolulu", "longbeach", "phoenix", "saltlakecity", "tucson", "sandiego"],
-    south: ["sanjose", "dallas", "sanantonio", "oklahomacity", "houston", "elpaso", "birmingham", "neworleans", "louisville", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginiabeach", "washingtondc", "tampa"],
-    midwest: ["minneapolis", "omaha", "kansascity", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
-};
-var regionsForSidebar = {
     northeast: ["new york", "philadelphia", "baltimore", "pittsburgh", "providence", "new haven", "harrisburg", "boston"],
-    west: ["portland", "las vegas", "seattle", "portland", "los angeles", "sacramento", "albuquerque", "colorado springs", "denver", "fresno", "honolulu", "long beach", "phoenix", "salt lake city", "tucson", "san diego"],
-    south: ["dallas-ft. worth", "san antonio", "oklahoma city", "houston", "el paso", "birmingham", "new orleans", "louisville", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginia beach", "washington", "tampa"],
+    west: ["las vegas", "seattle", "portland", "los angeles", "sacramento", "albuquerque", "colorado springs", "denver", "fresno", "honolulu", "long beach", "phoenix", "salt lake city", "tucson", "san diego"],
+    south: ["dallas", "san antonio", "oklahoma city", "houston", "el paso", "birmingham", "new orleans", "louisville", "tallahassee", "miami", "orlando", "austin", "charlotte", "greensboro", "jackson", "jacksonville", "memphis", "nashville", "raleigh", "richmond", "virginia beach", "washington", "tampa"],
     midwest: ["minneapolis", "omaha", "kansas city", "chicago", "detroit", "cincinnati", "cleveland", "columbus", "indianapolis", "milwaukee"]
 };
 
@@ -473,6 +468,7 @@ var regionmap = {
         lng: -95.712
     }
 };
+
 var map;
 
 //*** FUNCTIONS
@@ -504,17 +500,13 @@ $("#submit-btn").on("click", function() {
             $("#submit-btn").css({ "display": "none" });
 
             $('#name').html(localStorage.getItem("name"));
-        }
-
-    }
-
-    // $('#name-here').html(localStorage.getItem("usernameVar")); 
+        };
+    };
 });
 
 // ------- end validating input ------ //
 
-
-// ------- start building map for page 2 ----- //
+// ------- functions for page 2 ----- //
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -522,22 +514,18 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 };
 
-function initMap() {
-    // Create the map.
+function initMap(map, key) {
+    if (key == null) {
+        key = (localStorage.getItem("region"));
+    };
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: {
-            lat: 37.090,
-            lng: -95.712
+            lat: regionmap[key].lat,
+            lng: regionmap[key].lng
         },
         mapTypeId: 'terrain'
     });
-    // Construct the circle for each value in citymap.
-    // Note: We scale the area of the circle based on the population.
-    // Extract out the city for each JSON, loop through JSON object. For each key, get the tweet volume and replace population 
-
-    // init AJAX call to JSON file
-
 
     $.ajax({
             url: "https://api.myjson.com/bins/1c3nzr",
@@ -559,16 +547,14 @@ function initMap() {
                 } else {
                     trendingMap[cityName].volume = tweetVol;
                 };
-            }
+            };
         })
-
-    console.log(trendingMap);
-
     for (var city in citymap) {
-
         var cleanedCity = city.toLowerCase();
         cleanedCity = cleanedCity.split(" ").join("");
-
+        if (cleanedCity == "dallas") {
+            cleanedCity = "dallas-ft.worth";
+        };
         if (trendingMap[cleanedCity] != undefined && trendingMap[cleanedCity].hasOwnProperty("volume")) {
 
             // LOOP THROUGH THE JSON AND SEARCH FOR WHERE city == key.
@@ -587,44 +573,39 @@ function initMap() {
             });
         };
     };
-    var key = (localStorage.getItem("region"));
     fillSidebar(key);
 };
 
-
-function fillSidebar(key) { // function for populating the left-hand sidebar with five trends from the user-selected region
-    // clear the divs in the sidebar
+function fillSidebar(key) { // populates left sidebar with trending topics
     $("#topic").empty();
     $("#city").empty();
     $("#pop").empty();
-    var regionArr; // shortcut for accessing the array holding cities for selected region
+    var regionArr;
     if (key == "NE") {
-        regionArr = regionsForSidebar.northeast;
+        regionArr = regions.northeast;
         document.getElementById("selectNE").selected = true;
     } else if (key == "S") {
-        regionArr = regionsForSidebar.south;
+        regionArr = regions.south;
         document.getElementById("selectS").selected = true;
     } else if (key == "W") {
-        regionArr = regionsForSidebar.west;
+        regionArr = regions.west;
         document.getElementById("selectW").selected = true;
     } else if (key == "MW") {
-        regionArr = regionsForSidebar.midwest;
-        document.getElementById("selectMW").selected = true;        
-    }; 
-    var regionTemp = []; // holds 
-    var randomCities = [];
-    
-    for (var i = 0; i < regionArr.length; i++) {
-        var city = regionArr[i];
-        regionTemp.push(city);
+        regionArr = regions.midwest;
+        document.getElementById("selectMW").selected = true;
     };
+    var regionTemp = [];
+    var randomCities = [];
+
     for (var i = 0; i < 5; i++) {
-        var cityTemp = regionArr.shift(); // removes first item in the array
+        var cityTemp = regionArr.shift(); // removes first item in the array of regional cities
+        if (cityTemp == "dallas") {
+            cityTemp = "dallas-ft.worth";
+        };
         randomCities.push(cityTemp); // adds that item to end of randomCities 
-        randomCities.reverse(); // reverses order of randomCities
+        randomCities.reverse(); // reverses order of randomCities to avoid duplication
         regionArr.push(cityTemp); // adds item back into original array, but at the end
     };
-    console.log(randomCities);
     for (var i = 0; i < randomCities.length; i++) {
         function titleCase(str) {
             str = str.toLowerCase().split(' ');
@@ -641,13 +622,13 @@ function fillSidebar(key) { // function for populating the left-hand sidebar wit
         };
         var cityName = randomCities[i];
         var cityNameConverted = cityName.split(" ").join("");
-        console.log(cityName);
-        console.log(trendingMap);
-        var trendTopic = trendingMap[cityNameConverted].trend; 
+        // console.log(cityName);
+        // console.log(trendingMap);
+        var trendTopic = trendingMap[cityNameConverted].trend;
         var topicVolume = trendingMap[cityNameConverted].volume;
         var volumePretty = numberWithCommas(topicVolume);
 
-        if (cityName == "dallas-ft. worth") {
+        if (cityName == "dallas") {
             var printName = "Dallas-Ft. Worth";
         } else {
             var printName = titleCase(cityName);
@@ -661,21 +642,11 @@ function fillSidebar(key) { // function for populating the left-hand sidebar wit
 
 $("#sel2").change(function(event) {
     var key = event.target.value;
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: {
-            lat: regionmap[key].lat,
-            lng: regionmap[key].lng
-        },
-        mapTypeId: 'terrain'
-    });
-    // call function to populate sidebar with trending topics
     fillSidebar(key);
+    initMap(map, key);
 });
 
 //*** MAIN PROCESS
-// Runs after user clicks "Let's Go" button on first page
 $("#letsGo").on("click", function() {
-    // initializes Google map
     initMap();
 });
