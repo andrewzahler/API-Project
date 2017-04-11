@@ -1778,10 +1778,10 @@
     ],
     "trends": [
       {
-        "name": "#ImmigrantsDayMA",
+        "name": "Sean Spicer",
         "promoted_content": null,
         "query": "%23ImmigrantsDayMA",
-        "tweet_volume": null,
+        "tweet_volume": 320591,
         "url": "http://twitter.com/search?q=%23ImmigrantsDayMA"
       },
       {
@@ -12500,12 +12500,12 @@
     "locations": [
       {
         "name": "New Haven",
-        "woeid": 2458410
+        "woeid": 297648
       }
     ],
     "trends": [
       {
-        "name": "Steve Bannon",
+        "name": "Sean Spicer",
         "promoted_content": null,
         "query": "%22Steve+Bannon%22",
         "tweet_volume": 131711,
@@ -13229,10 +13229,10 @@
     ],
     "trends": [
       {
-        "name": "Pepsi",
+        "name": "Sean Spicer",
         "promoted_content": null,
-        "query": "Pepsi",
-        "tweet_volume": 1176267,
+        "query": "Sean Spicer",
+        "tweet_volume": 308429,
         "url": "http://twitter.com/search?q=Pepsi"
       },
       {
@@ -16480,10 +16480,10 @@
     ],
     "trends": [
       {
-        "name": "Steve Bannon",
+        "name": "Sean Spicer",
         "promoted_content": null,
         "query": "%22Steve+Bannon%22",
-        "tweet_volume": 133500,
+        "tweet_volume": 320591,
         "url": "http://twitter.com/search?q=%22Steve+Bannon%22"
       },
       {

@@ -539,7 +539,7 @@ function initMap(map, key) {
     });
 
     $.ajax({
-            url: "https://api.myjson.com/bins/1c3nzr",
+            url: "mock_responses/twitter_trends.json",
             method: "GET",
             async: false
         })
