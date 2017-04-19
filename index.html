@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Wildfire | Sign-in</title>
+    <!--jQuery-->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <!--bootstrap CDN-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--font-->
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Lato|Yanone+Kaffeesatz" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400" rel="stylesheet">
+</head>
+
+<body id="page1">
+    <!--header-->
+    <div class="container" id="header">
+        <h3 class="panel-title"> Wildfire</h3>
+    </div>
+    <div class="container" id="containerOfTheDocument">
+        <!--Left side panel here-->
+        <div class="panel-body" id="appDescription-div">
+            <div class="panel-body" id="main-co">
+                <div class="appdescription">
+                    <span id="header-text">Forget scrolling feeds </span><br>
+                    <span id="sub-text">WATCH IDEAS CATCH FIRE <br>
+                    </span>
+
+                    <br>
+                    <!-- <img src="assets/images/zigzag.svg" id="zigzag"><br> -->
+                    <!-- <hr align="left" id="dash"> -->
+                    <span id="subsub-text"> 
+                    
+                    Pairing Google Maps + Twitter to inform today's global citizen. Version 1.0.
+                    <br>
+                    <b>Sign in</b> to get started.</span>
+                </div>
+            </div>
+        </div>
+        <!--right-side panel-->
+        <!--beginning of form-->
+        <form>
+            <div class="userinfo">
+                <div class="panel-body" id="form-panel">
+                    <div>
+                        <h4 id="padding"> Name </h4>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="textfield-name">
+                            <div class="warning" id="warningDiv1"></div>
+                        </div>
+                    </div>
+                    <!--User Enters the Region-->
+                    <div class="form-group" id="region-select">
+                        <label for="sel1">
+                            <h4>Select Your Region</h4></label>
+                        <select class="form-control" id="sel1">
+                            <option value="select">Select</option>
+                            <option value="NE">Northeast</option>
+                            <option value="S">South</option>
+                            <option value="MW">Midwest</option>
+                            <option value="W">West</option>
+                        </select>
+                        <div class="warning" id="warningDiv2"></div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn" id="submit-btn">Submit</button>
+                    <a type="submit" class="btn" id="letsGo" href="projectmap.html">Let's Go</a>
+                </div>
+            </div>
+       </form>
+    </div>
+    <!--end of form -->
+    <!--footer-->
+    <footer class="footer">
+        <div class="container" id="footer-text">
+            <p class="text-muted" id="footer-page1">
+                Zahler / Percy / Reid &copy; 2017
+            </p>
+        </div>
+    </footer>
+    <script src="assets/javascript/javascript.js"></script>
+</body>
+
+</html>
